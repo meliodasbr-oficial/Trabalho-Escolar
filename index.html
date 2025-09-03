@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Química dos Cosméticos</title>
+    <title>Química dos Cosméticos - Trabalho Escolar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -20,6 +20,8 @@
             --light: #f5f7fa;
             --dark: #333;
             --text: #444;
+            --correct: #4caf50;
+            --incorrect: #f44336;
         }
         
         body {
@@ -82,6 +84,11 @@
             color: var(--secondary);
             margin: 15px 0 10px;
             font-size: 1.2rem;
+        }
+        
+        h4 {
+            color: var(--accent);
+            margin: 15px 0 8px;
         }
         
         p {
@@ -170,6 +177,10 @@
             color: var(--dark);
             position: relative;
             overflow: hidden;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
         }
         
         .formula-description {
@@ -266,6 +277,24 @@
             background: #e4e8f0;
         }
         
+        .feedback {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .correct {
+            background-color: rgba(76, 175, 80, 0.1);
+            border-left: 4px solid var(--correct);
+        }
+        
+        .incorrect {
+            background-color: rgba(244, 67, 54, 0.1);
+            border-left: 4px solid var(--incorrect);
+        }
+        
         button.submit {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
@@ -311,15 +340,9 @@
             50% { transform: translateY(-10px); }
         }
         
-        @keyframes draw {
-            from { stroke-dashoffset: 1000; }
-            to { stroke-dashoffset: 0; }
-        }
-        
         /* Química estrutural */
         .chemical-structure {
             width: 100%;
-            height: 200px;
             margin: 20px 0;
             display: flex;
             justify-content: center;
@@ -337,6 +360,24 @@
             border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             animation: fadeIn 2s ease;
+        }
+        
+        /* Info boxes */
+        .info-box {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .info-title {
+            color: var(--secondary);
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         /* Responsividade adicional */
@@ -358,6 +399,10 @@
                 padding: 8px 12px;
                 font-size: 0.8rem;
             }
+            
+            .chemical-formula {
+                font-size: 1.1rem;
+            }
         }
         
         /* Efeito de digitação */
@@ -367,6 +412,201 @@
             white-space: nowrap;
             margin: 0 auto;
             letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary); }
+        }
+        
+        /* Tabela */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--light);
+            color: var(--primary);
+        }
+        
+        tr:hover {
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Capa -->
+        <section class="cover">
+            <h1>Química dos Cosméticos</h1>
+            <p>Funções orgânicas em cremes, shampoos e maquiagens</p>
+            <p>Impacto na saúde e na autoestima</p>
+            <p>Grupo: Richard, Heloísa, Matheus, Otávio, Emanuel e Davi</p>
+            <p>Turma: 3º Ano - Data: Outubro 2023</p>
+        </section>
+
+        <!-- Navegação -->
+        <nav>
+            <button onclick="scrollToSection('introducao')">Introdução</button>
+            <button onclick="scrollToSection('desenvolvimento')">Desenvolvimento</button>
+            <button onclick="scrollToSection('formulas')">Fórmulas</button>
+            <button onclick="scrollToSection('quiz')">Questionário</button>
+        </nav>
+
+        <!-- Introdução -->
+        <section id="introducao">
+            <h2>Introdução</h2>
+            <p>Os cosméticos são produtos utilizados para higiene, embelezamento e alteração da aparência. A química orgânica desempenha um papel fundamental na composição desses produtos, determinando suas propriedades, eficácia e segurança.</p>
+            
+            <div class="info-box">
+                <div class="info-title">
+                    <i class="fas fa-flask"></i>
+                    <span>Contextualização do Tema</span>
+                </div>
+                <p>A indústria de cosméticos movimenta bilhões de dólares anualmente e está intrinsecamente ligada aos avanços da química orgânica. Desde a antiguidade, os seres humanos utilizam substâncias naturais e sintéticas para realçar a beleza, mas foi com o desenvolvimento da química orgânica no século XIX que a cosmética moderna se estabeleceu.</p>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-title">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Objetivos do Trabalho</span>
+                </div>
+                <p>Este trabalho tem como objetivo explorar as funções orgânicas presentes em cosméticos, seus efeitos na saúde humana, impactos na autoestima e relações interdisciplinares com outras áreas do conhecimento, como Biologia, Sociologia, Física e Artes.</p>
+            </div>
+        </section>
+
+        <!-- Desenvolvimento -->
+        <section id="desenvolvimento">
+            <h2>Desenvolvimento</h2>
+            
+            <h3>Funções Orgânicas em Cosméticos</h3>
+            <p>Os cosméticos contêm diversas funções orgânicas que determinam suas propriedades. Estas substâncias são cuidadosamente selecionadas para proporcionar os efeitos desejados, como limpeza, hidratação, proteção e embelezamento.</p>
+            
+            <div class="molecules">
+                <div class="molecule">
+                    <div class="molecule-inner">
+                        <div class="molecule-front">
+                            <h4>Ácidos Graxos</h4>
+                            <p>Presentes em hidratantes</p>
+                        </div>
+                        <div class="molecule-back">
+                            <p>Formam uma barreira protetora na pele, prevenindo perda de água e mantendo a hidratação. Exemplos: ácido esteárico, ácido oléico.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="molecule">
+                    <div class="molecule-inner">
+                        <div class="molecule-front">
+                            <h4>Siliconas</h4>
+                            <p>Shampoos e condicionadores</p>
+                        </div>
+                        <div class="molecule-back">
+                            <p>Suavizam o cabelo, selam as cutículas e proporcionam brilho, reduzindo o frizz. Exemplos: dimeticona, ciclometicona.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="molecule">
+                    <div class="molecule-inner">
+                        <div class="molecule-front">
+                            <h4>Parabenos</h4>
+                            <p>Conservantes</p>
+                        </div>
+                        <div class="molecule-back">
+                            <p>Previnem crescimento microbiano, mas seu uso é controverso devido a possíveis efeitos na saúde. Exemplos: metilparabeno, propilparabeno.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="molecule">
+                    <div class="molecule-inner">
+                        <div class="molecule-front">
+                            <h4>Ésteres</h4>
+                            <p>Emolientes e fragrâncias</p>
+                        </div>
+                        <div class="molecule-back">
+                            <p>Atuam como emolientes suaves e veículos para fragrâncias. Exemplos: benzoato de benzila, acetato de benzila.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Aplicações no Cotidiano</h3>
+            <p>No dia a dia, utilizamos diversos cosméticos que contêm compostos orgânicos específicos:</p>
+            
+            <table>
+                <tr>
+                    <th>Produto</th>
+                    <th>Compostos Orgânicos</th>
+                    <th>Função</th>
+                </tr>
+                <tr>
+                    <td>Cremes hidratantes</td>
+                    <td>Ésteres e ácidos graxos</td>
+                    <td>Formam uma barreira oclusiva na pele</td>
+                </tr>
+                <tr>
+                    <td>Shampoos</td>
+                    <td>Tensoativos (sulfatos) e siliconas</td>
+                    <td>Removem sujeira e condicionam</td>
+                </tr>
+                <tr>
+                    <td>Maquiagens</td>
+                    <td>Pigmentos orgânicos e polímeros</td>
+                    <td>Proporcionam cor, textura e durabilidade</td>
+                </tr>
+                <tr>
+                    <td>Protetores solares</td>
+                    <td>Compostos orgânicos como avobenzona</td>
+                    <td>Absorvem radiação UV</td>
+                </tr>
+                <tr>
+                    <td>Desodorantes</td>
+                    <td>Parabenos e triclosan</td>
+                    <td>Agentes antibacterianos</td>
+                </tr>
+            </table>
+            
+            <h3>Relações Interdisciplinares</h3>
+            
+            <div class="info-box">
+                <div class="info-title">
+                    <i class="fas fa-dna"></i>
+                    <span>Biologia: Pele e Cabelo</span>
+                </div>
+                <p>A pele é o maior órgão do corpo humano, composta por epiderme, derme e hipoderme. Os cosméticos interagem com essas estruturas, podendo nutrir, hidratar ou causar reações adversas. O cabelo, por sua vez, é formado por queratina, e produtos capilares atuam nas cutículas para alterar aparência e textura.</p>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-title">
+                    <i class="fas fa-users"></i>
+                    <span>Sociologia: Padrões de Beleza</span>
+                </div>
+                <p>A indústria de cosméticos é influenciada e influencia os padrões de beleza socialmente construídos, impactando a autoestima e autopercepção dos indivíduos. Através da publicidade, cria-se um ideal de beleza que muitas vezes é inatingível, o que pode gerar insatisfação corporal.</p>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-title">
+                    <i class="fas fa-atom"></i>
+                    <span>Física: Propriedades Ópticas</span>
+                </div>
+                <p>Pigmentos e partículas presentes em;
             animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
         }
         
