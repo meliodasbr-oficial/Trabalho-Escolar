@@ -25,7 +25,7 @@
         }
         
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            background: white;
             color: var(--text);
             line-height: 1.6;
             padding: 15px;
@@ -39,9 +39,8 @@
             padding: 10px;
         }
         
-        /* Capa Principal Elegante */
+        /* Capa Principal */
         .cover-container {
-            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -49,225 +48,128 @@
             background: linear-gradient(120deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             text-align: center;
-            position: relative;
-            overflow: hidden;
             border-radius: 15px;
             margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .molecules-animation {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0.3;
-            z-index: 0;
-        }
-        
-        .molecule {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            animation: float 15s infinite ease-in-out;
-        }
-        
-        .molecule:nth-child(1) {
-            width: 100px;
-            height: 100px;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-        
-        .molecule:nth-child(2) {
-            width: 150px;
-            height: 150px;
-            top: 60%;
-            left: 80%;
-            animation-delay: 2s;
-        }
-        
-        .molecule:nth-child(3) {
-            width: 80px;
-            height: 80px;
-            top: 70%;
-            left: 15%;
-            animation-delay: 4s;
-        }
-        
-        .molecule:nth-child(4) {
-            width: 120px;
-            height: 120px;
-            top: 10%;
-            left: 70%;
-            animation-delay: 6s;
-        }
-        
-        .cover-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            padding: 20px;
+            padding: 40px 20px;
+            page-break-after: always;
         }
         
         .cover-content h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
             font-weight: 700;
             letter-spacing: 1px;
+            line-height: 1.2;
         }
         
         .cover-content p {
-            font-size: 1.2rem;
-            margin: 10px 0;
+            font-size: 1rem;
+            margin: 8px 0;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
         }
         
         .cover-content .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
             font-weight: 300;
-        }
-        
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-            cursor: pointer;
         }
         
         /* Seções */
         section {
             background: white;
             border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            animation: slideUp 1s ease;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            page-break-inside: avoid;
         }
         
         h2 {
             color: var(--primary);
-            margin-bottom: 20px;
-            padding-bottom: 12px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
             border-bottom: 2px solid #eaeaea;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
         }
         
         h3 {
             color: var(--secondary);
-            margin: 18px 0 12px;
-            font-size: 1.4rem;
+            margin: 15px 0 10px;
+            font-size: 1.3rem;
         }
         
         h4 {
             color: var(--accent);
-            margin: 15px 0 8px;
+            margin: 12px 0 6px;
+            font-size: 1.1rem;
         }
         
         p {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             text-align: justify;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
         
         ul {
-            padding-left: 20px;
+            padding-left: 18px;
             margin-bottom: 15px;
         }
         
         li {
             margin-bottom: 8px;
-            font-size: 1rem;
-        }
-        
-        /* Navegação */
-        nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-        
-        nav button {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            border: none;
-            padding: 12px 18px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            flex-grow: 1;
-            text-align: center;
-            max-width: 180px;
-        }
-        
-        nav button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-size: 0.95rem;
         }
         
         /* Fórmulas */
         .formulas {
             display: flex;
             flex-direction: column;
-            gap: 25px;
-            margin: 25px 0;
+            gap: 20px;
+            margin: 20px 0;
         }
         
         .formula-card {
             background: var(--light);
             border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            animation: float 6s infinite ease-in-out;
-        }
-        
-        .formula-card:nth-child(2) {
-            animation-delay: 1s;
-        }
-        
-        .formula-card:nth-child(3) {
-            animation-delay: 2s;
+            padding: 15px;
+            border: 1px solid #ddd;
         }
         
         .formula-title {
             color: var(--primary);
             text-align: center;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             font-weight: bold;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
         }
         
         .formula-structure {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 140px;
+            min-height: 60px;
             font-family: 'Courier New', monospace;
             font-weight: bold;
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             color: var(--dark);
             position: relative;
             overflow: hidden;
-            padding: 15px;
+            padding: 12px;
             background: white;
             border-radius: 10px;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
+            text-align: center;
+            border: 1px solid #eee;
         }
         
         .formula-description {
-            margin-top: 18px;
-            padding: 15px;
+            margin-top: 15px;
+            padding: 12px;
             background: white;
             border-radius: 10px;
-            font-size: 1rem;
+            font-size: 0.9rem;
+            border: 1px solid #eee;
         }
         
         /* Moléculas */
@@ -275,44 +177,36 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
-            margin: 25px 0;
+            gap: 15px;
+            margin: 20px 0;
         }
         
         .molecule-card {
-            width: 160px;
-            height: 160px;
+            width: 140px;
+            height: 140px;
             perspective: 1000px;
-            cursor: pointer;
         }
         
         .molecule-inner {
             position: relative;
             width: 100%;
             height: 100%;
-            transition: transform 0.8s;
             transform-style: preserve-3d;
-            animation: float 5s infinite ease-in-out;
-        }
-        
-        .molecule-card:hover .molecule-inner {
-            transform: rotateY(180deg);
-            animation-play-state: paused;
         }
         
         .molecule-front, .molecule-back {
             position: absolute;
             width: 100%;
             height: 100%;
-            backface-visibility: hidden;
-            border-radius: 12px;
+            backface-visibility: visible;
+            border-radius: 10px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 15px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            padding: 12px;
             text-align: center;
+            border: 1px solid #ddd;
         }
         
         .molecule-front {
@@ -323,169 +217,115 @@
         .molecule-back {
             background: white;
             color: var(--dark);
-            transform: rotateY(180deg);
+            font-size: 0.85rem;
         }
         
         /* Questionário */
         .quiz {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-            padding: 25px;
+            background: white;
+            padding: 20px;
             border-radius: 15px;
+            border: 1px solid #ddd;
+            page-break-before: always;
         }
         
         .question {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--light);
+            border-radius: 10px;
+            border: 1px solid #ddd;
         }
         
         .options label {
             display: block;
-            margin: 10px 0;
-            padding: 12px;
-            background: #f5f7fa;
+            margin: 8px 0;
+            padding: 10px;
+            background: #f9f9f9;
             border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-size: 1rem;
+            font-size: 0.9rem;
+            border: 1px solid #eee;
         }
         
-        .options label:hover {
-            background: #e4e8f0;
+        .correct-answer {
+            background-color: rgba(76, 175, 80, 0.1) !important;
+            border-left: 4px solid var(--correct) !important;
+            font-weight: bold;
         }
         
         .feedback {
-            display: none;
-            margin-top: 18px;
-            padding: 18px;
-            border-radius: 10px;
-            font-size: 1rem;
-        }
-        
-        .correct {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
             background-color: rgba(76, 175, 80, 0.1);
             border-left: 4px solid var(--correct);
-        }
-        
-        .incorrect {
-            background-color: rgba(244, 67, 54, 0.1);
-            border-left: 4px solid var(--incorrect);
-        }
-        
-        button.submit {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: block;
-            margin: 25px auto;
-            width: 80%;
-            max-width: 280px;
-        }
-        
-        button.submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
         /* Rodapé */
         footer {
             text-align: center;
-            padding: 25px;
-            margin-top: 40px;
+            padding: 20px;
+            margin-top: 30px;
             color: var(--text);
-            font-size: 1rem;
+            font-size: 0.9rem;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #ddd;
+            page-break-before: always;
         }
         
         .conclusion {
             font-weight: bold;
             color: var(--primary);
-            margin-top: 15px;
-            font-size: 1.2rem;
-        }
-        
-        /* Animações */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-20px) translateX(-50%); }
-            60% { transform: translateY(-10px) translateX(-50%); }
+            margin-top: 12px;
+            font-size: 1rem;
         }
         
         /* Química estrutural */
-        .chemical-structure {
-            width: 100%;
-            margin: 25px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
         .chemical-formula {
             font-family: 'Courier New', monospace;
             font-weight: bold;
-            font-size: 1.5rem;
-            line-height: 2;
+            font-size: 1.2rem;
+            line-height: 1.8;
             text-align: center;
-            padding: 18px;
+            padding: 15px;
             background: var(--light);
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 2s ease;
+            border-radius: 10px;
+            border: 1px solid #ddd;
         }
         
         /* Info boxes */
         .info-box {
             background: var(--light);
-            padding: 18px;
-            border-radius: 12px;
-            margin: 18px 0;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
             border-left: 4px solid var(--secondary);
+            border: 1px solid #ddd;
         }
         
         .info-title {
             color: var(--secondary);
             font-weight: bold;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.1rem;
+            gap: 10px;
+            font-size: 1rem;
         }
         
         /* Tabela */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 18px 0;
-            font-size: 1rem;
+            margin: 15px 0;
+            font-size: 0.85rem;
+            border: 1px solid #ddd;
         }
         
         th, td {
-            padding: 15px 18px;
+            padding: 10px 12px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
@@ -495,212 +335,84 @@
             color: var(--primary);
         }
         
-        tr:hover {
-            background-color: rgba(0, 0, 0, 0.03);
+        /* Media query para impressão */
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            
+            .container {
+                padding: 0;
+                max-width: 100%;
+            }
+            
+            section, .quiz, footer, .info-box, .formula-card, .formula-structure, 
+            .formula-description, .molecule-front, .molecule-back, table {
+                border: 1px solid #999 !important;
+                page-break-inside: avoid;
+            }
+            
+            .cover-container {
+                page-break-after: always;
+                height: auto;
+            }
+            
+            .quiz {
+                page-break-before: always;
+            }
+            
+            footer {
+                page-break-before: always;
+            }
+            
+            nav {
+                display: none;
+            }
+            
+            .scroll-down {
+                display: none;
+            }
+            
+            .molecules-animation {
+                display: none;
+            }
+            
+            .intro-overlay, .outro-overlay {
+                display: none;
+            }
         }
         
-        /* Responsividade adicional */
-        @media (max-width: 768px) {
-            .cover-content h1 {
-                font-size: 2.2rem;
-            }
-            
-            .cover-content .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .molecule-card {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .formula-structure {
-                font-size: 1.1rem;
-            }
-            
-            nav button {
-                padding: 10px 15px;
-                font-size: 0.9rem;
-            }
-            
-            .chemical-formula {
-                font-size: 1.2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
+        /* Ajustes para telas muito pequenas */
+        @media (max-width: 360px) {
             .cover-content h1 {
                 font-size: 1.8rem;
             }
             
-            .cover-content p {
-                font-size: 1rem;
+            .cover-content .subtitle {
+                font-size: 1.1rem;
             }
             
             .molecule-card {
                 width: 120px;
                 height: 120px;
             }
-            
-            .formula-structure {
-                font-size: 1rem;
-            }
-            
-            nav button {
-                padding: 8px 12px;
-                font-size: 0.8rem;
-                max-width: 140px;
-            }
-            
-            .chemical-formula {
-                font-size: 1rem;
-            }
-        }
-        
-        /* Efeito de digitação */
-        .typewriter {
-            overflow: hidden;
-            border-right: .15em solid var(--primary);
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: .15em;
-            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-        }
-        
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--primary); }
-        }
-        
-        /* Transição de abertura */
-        .intro-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            z-index: 1000;
-            color: white;
-            transition: opacity 1s ease-out;
-        }
-        
-        .intro-text {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-        }
-        
-        .intro-subtext {
-            font-size: 1.5rem;
-            text-align: center;
-            opacity: 0;
-            animation: fadeIn 1s ease-in forwards;
-            animation-delay: 1.5s;
-        }
-        
-        .loading-bar {
-            width: 300px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 3px;
-            margin-top: 2rem;
-            overflow: hidden;
-        }
-        
-        .loading-progress {
-            height: 100%;
-            width: 0%;
-            background: white;
-            border-radius: 3px;
-            animation: loading 3s ease-in-out forwards;
-        }
-        
-        @keyframes loading {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
-        
-        .outro-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            z-index: 1000;
-            color: white;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 1s ease-in;
-        }
-        
-        .outro-text {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-        }
-        
-        .outro-subtext {
-            font-size: 1.5rem;
-            text-align: center;
         }
     </style>
 </head>
 <body>
-    <!-- Tela de Introdução -->
-    <div class="intro-overlay" id="introOverlay">
-        <div class="intro-text">Química dos Cosméticos</div>
-        <div class="intro-subtext">Explorando as moléculas da beleza</div>
-        <div class="loading-bar">
-            <div class="loading-progress"></div>
-        </div>
-    </div>
-
-    <div class="container" id="mainContent" style="opacity: 0;">
+    <div class="container">
         <!-- Capa Principal -->
         <div class="cover-container">
-            <div class="molecules-animation">
-                <div class="molecule"></div>
-                <div class="molecule"></div>
-                <div class="molecule"></div>
-                <div class="molecule"></div>
-            </div>
             <div class="cover-content">
                 <h1>QUÍMICA DOS COSMÉTICOS</h1>
                 <p class="subtitle">Compostos Orgânicos e Suas Aplicações</p>
                 <p>Funções orgânicas em cremes, shampoos e maquiagens</p>
                 <p>Impacto na saúde e na autoestima</p>
-                <p>Turma: 3º Ano - Data: Outubro 2023</p>
-            </div>
-            <div class="scroll-down" onclick="scrollToSection('introducao')">
-                <i class="fas fa-chevron-down"></i>
+                <p>Turma: 3º Ano - Data: Setembro 2025</p>
+                <p>Integrantes: Richard, Heloísa, Matheus, Otávio, Emanuel e Davi</p>
             </div>
         </div>
-
-        <!-- Navegação -->
-        <nav>
-            <button onclick="scrollToSection('introducao')">Introdução</button>
-            <button onclick="scrollToSection('desenvolvimento')">Desenvolvimento</button>
-            <button onclick="scrollToSection('formulas')">Fórmulas</button>
-            <button onclick="scrollToSection('quiz')">Questionário</button>
-            <button onclick="showConclusion()">Conclusão</button>
-        </nav>
 
         <!-- Introdução -->
         <section id="introducao">
@@ -721,14 +433,6 @@
                     <span>Objetivos do Trabalho</span>
                 </div>
                 <p>Este trabalho tem como objetivo explorar as funções orgânicas presentes em cosméticos, seus efeitos na saúde humana, impactos na autoestima e relações interdisciplinares com outras áreas do conhecimento, como Biologia, Sociologia, Física e Artes.</p>
-            </div>
-            
-            <div class="info-box">
-                <div class="info-title">
-                    <i class="fas fa-users"></i>
-                    <span>Integrantes do Grupo</span>
-                </div>
-                <p>Richard, Heloísa, Matheus, Otávio, Emanuel e Davi</p>
             </div>
         </section>
 
@@ -792,38 +496,40 @@
             <h3>Aplicações no Cotidiano</h3>
             <p>No dia a dia, utilizamos diversos cosméticos que contêm compostos orgânicos específicos:</p>
             
-            <table>
-                <tr>
-                    <th>Produto</th>
-                    <th>Compostos Orgânicos</th>
-                    <th>Função</th>
-                </tr>
-                <tr>
-                    <td>Cremes hidratantes</td>
-                    <td>Ésteres e ácidos graxos</td>
-                    <td>Formam uma barreira oclusiva na pele</td>
-                </tr>
-                <tr>
-                    <td>Shampoos</td>
-                    <td>Tensoativos (sulfatos) e siliconas</td>
-                    <td>Removem sujeita e condicionam</td>
-                </tr>
-                <tr>
-                    <td>Maquiagens</td>
-                    <td>Pigmentos orgânicos e polímeros</td>
-                    <td>Proporcionam cor, textura e durabilidade</td>
-                </tr>
-                <tr>
-                    <td>Protetores solares</td>
-                    <td>Compostos orgânicos como avobenzona</td>
-                    <td>Absorvem radiação UV</td>
-                </tr>
-                <tr>
-                    <td>Desodorantes</td>
-                    <td>Parabenos e triclosan</td>
-                    <td>Agentes antibacterianos</td>
-                </tr>
-            </table>
+            <div style="overflow-x: auto;">
+                <table>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Compostos Orgânicos</th>
+                        <th>Função</th>
+                    </tr>
+                    <tr>
+                        <td>Cremes hidratantes</td>
+                        <td>Ésteres e ácidos graxos</td>
+                        <td>Formam uma barreira oclusiva na pele</td>
+                    </tr>
+                    <tr>
+                        <td>Shampoos</td>
+                        <td>Tensoativos (sulfatos) e siliconas</td>
+                        <td>Removem sujeita e condicionam</td>
+                    </tr>
+                    <tr>
+                        <td>Maquiagens</td>
+                        <td>Pigmentos orgânicos e polímeros</td>
+                        <td>Proporcionam cor, textura e durabilidade</td>
+                    </tr>
+                    <tr>
+                        <td>Protetores solares</td>
+                        <td>Compostos orgânicos como avobenzona</td>
+                        <td>Absorvem radiação UV</td>
+                    </tr>
+                    <tr>
+                        <td>Desodorantes</td>
+                        <td>Parabenos e triclosan</td>
+                        <td>Agentes antibacterianos</td>
+                    </tr>
+                </table>
+            </div>
             
             <h3>Relações Interdisciplinares</h3>
             
@@ -840,7 +546,7 @@
                     <i class="fas fa-users"></i>
                     <span>Sociologia: Padrões de Beleza</span>
                 </div>
-                <p>A indústria de cosméticos é influenciada e influencia os padrões de belleza socialmente construídos, impactando a autoestima e autopercepção dos indivíduos. Através da publicidade, cria-se um ideal de beleza que muitas vezes é inatingível, o que pode gerar insatisfação corporal.</p>
+                <p>A indústria de cosméticos é influenciada e influencia os padrões de belleza socialmente construídos, impactando a autoestima e autopercepção dos indivíduos. Através da publicidade, cria-se um ideal de beleza que muitas vezes é inatingível, o qui pode gerar insatisfação corporal.</p>
             </div>
             
             <div class="info-box">
@@ -867,7 +573,7 @@
             <h4>Riscos</h4>
             <p>Alguns compostos podem causar alergias, irritações ou até mesmo atuar como disruptores endócrinos. A regulamentação por órgãos como a ANVISA é essencial para garantir a segurança dos produtos.</p>
             
-            <h4>Impactos ambientais</h4>
+             <h4>Impactos ambientais</h4>
             <p>Microplásticos em esfoliantes e embalagens não biodegradáveis contribuem para a poluição ambiental. A indústria tem buscado alternativas sustentáveis, como embalagens recicladas e fórmulas biodegradáveis.</p>
         </section>
 
@@ -921,7 +627,7 @@
                     <div class="formula-description">
                         <p><strong>Função:</strong> Glicosaminoglicano</p>
                         <p><strong>Aplicação:</strong> Hidratante intensivo em séruns e cremes. Capaz de reter até 1000 vezes seu peso em água, preenchendo espaços entre fibras de colágeno e elastina.</p>
-                        <p><strong>Observações:</strong> Presente naturalmente na pele humana, diminui com a idade. Em cosméticos, é usado em diferentes pesos moleculares para atuar em diversas camadas da peau.</p>
+                        <p><strong>Observações:</strong> Presente naturalmente na pele humana, diminui com a idade. Em cosméticos, é usado em diferentes pesos moleculares para atuar em diversas camadas da pele.</p>
                     </div>
                 </div>
             </div>
@@ -935,355 +641,203 @@
         <!-- Questionário -->
         <section id="quiz" class="quiz">
             <h2>Questionário</h2>
-            <p>Teste seus conhecimentos sobre a química dos cosméticos. Marque a alternativa correta e veja o feedback imediato:</p>
+            <p>Teste seus conhecimentos sobre a química dos cosméticos:</p>
             
             <div class="question">
                 <h3>1. Qual a principal função dos ácidos graxos em cosméticos?</h3>
                 <div class="options">
-                    <label><input type="radio" name="q1" value="a"> a) Promover limpeza profunda</label>
-                    <label><input type="radio" name="q1" value="b"> b) Formar barreira protetora na pele</label>
-                    <label><input type="radio" name="q1" value="c"> c) Fornecer cor aos produtos</label>
-                    <label><input type="radio" name="q1" value="d"> d) Conservar o produto</label>
+                    <label class="incorrect-answer">a) Promover limpeza profunda</label>
+                    <label class="correct-answer">b) Formar barreira protetora na pele</label>
+                    <label class="incorrect-answer">c) Fornecer cor aos produtos</label>
+                    <label class="incorrect-answer">d) Conservar o produto</label>
                 </div>
-                <div id="feedback-q1" class="feedback"></div>
+                <div class="feedback">
+                    <p><strong>Resposta Correta: b) Formar barreira protetora na pele</strong></p>
+                    <p>Os ácidos graxos formam uma barreira oclusiva na pele, prevenindo a perda de água transepidérmica e mantendo a hidratação cutânea.</p>
+                    <p><strong>Por que não é as outras:</strong></p>
+                    <p>a) A limpeza profunda é função dos tensoativos, não dos ácidos graxos.</p>
+                    <p>c) A cor é fornecida por pigmentos e corantes, não por ácidos graxos.</p>
+                    <p>d) A conservação é feita por compostos como parabenos, não por ácidos graxos.</p>
+                </div>
             </div>
             
             <div class="question">
                 <h3>2. Qual destes compostos é responsável por absorver radiação UV em protetores solares?</h3>
                 <div class="options">
-                    <label><input type="radio" name="q2" value="a"> a) Ácido esteárico</label>
-                    <label><input type="radio" name="q2" value="b"> b) Dimeticona</label>
-                    <label><input type="radio" name="q2" value="c"> c) Avobenzona</label>
-                    <label><input type="radio" name="q2" value="d"> d) Metilparabeno</label>
+                    <label class="incorrect-answer">a) Ácido esteárico</label>
+                    <label class="incorrect-answer">b) Dimeticona</label>
+                    <label class="correct-answer">c) Avobenzona</label>
+                    <label class="incorrect-answer">d) Metilparabeno</label>
                 </div>
-                <div id="feedback-q2" class="feedback"></div>
+                <div class="feedback">
+                    <p><strong>Resposta Correta: c) Avobenzona</strong></p>
+                    <p>A avobenzona é um filtro solar orgânico que absorve radiação UVA, protegendo a pele contra os danos causados pela exposição solar.</p>
+                    <p><strong>Por que não é as outras:</strong></p>
+                    <p>a) O ácido esteárico é um emulsionante e espessante, não absorve radiação UV.</p>
+                    <p>b) A dimeticona é uma silicona usada para condicionar cabelos e pele, não para proteção solar.</p>
+                    <p>d) O metilparabeno é um conservante, não possui propriedades de absorção de UV.</p>
+                </div>
             </div>
             
             <div class="question">
                 <h3>3. Qual a principal controvérsia associada aos parabenos?</h3>
                 <div class="options">
-                    <label><input type="radio" name="q3" value="a"> a) Seu alto custo de produção</label>
-                    <label><input type="radio" name="q3" value="b"> b) Sua possível atividade estrogênica no organismo</label>
-                    <label><input type="radio" name="q3" value="c"> c) Sua ineficiência como conservantes</label>
-                    <label><input type="radio" name="q3" value="d"> d) Sua capacidade de causar mudança de cor nos produtos</label>
+                    <label class="incorrect-answer">a) Seu alto custo de produção</label>
+                    <label class="correct-answer">b) Sua possível atividade estrogênica no organismo</label>
+                    <label class="incorrect-answer">c) Sua ineficiência como conservantes</label>
+                    <label class="incorrect-answer">d) Sua capacidade de causar mudança de cor nos produtos</label>
                 </div>
-                <div id="feedback-q3" class="feedback"></div>
+                <div class="feedback">
+                    <p><strong>Resposta Correta: b) Sua possível atividade estrogênica no organismo</strong></p>
+                    <p>Estudos controversos sugerem que parabenos podem ter atividade estrogênica fraca, mas órgãos reguladores consideram seguro em baixas concentrações.</p>
+                    <p><strong>Por que não é as outras:</strong></p>
+                    <p>a) O custo de produção dos parabenos é baixo, não sendo esta a controvérsia principal.</p>
+                    <p>c) Os parabenos são eficientes como conservantes, esta não é a questão controversa.</p>
+                    <p>d) Parabenos não causam mudança de cor nos produtos, esta não é uma característica associada a eles.</p>
+                </div>
             </div>
             
             <div class="question">
                 <h3>4. Como a sociologia se relaciona com o estudo dos cosméticos?</h3>
                 <div class="options">
-                    <label><input type="radio" name="q4" value="a"> a) Estuda as reações químicas dos compostos</label>
-                    <label><input type="radio" name="q4" value="b"> b) Analisa os padrões de beleza socialmente construídos</label>
-                    <label><input type="radio" name="q4" value="c"> c) Desenvolve novas moléculas para cosméticos</label>
-                    <label><input type="radio" name="q4" value="d"> d) Estuda a estrutura da pele e cabelo</label>
+                    <label class="incorrect-answer">a) Estuda as reações químicas dos compostos</label>
+                    <label class="correct-answer">b) Analisa os padrões de beleza socialmente construídos</label>
+                    <label class="incorrect-answer">c) Desenvolve novas moléculas para cosméticos</label>
+                    <label class="incorrect-answer">d) Estuda a estrutura da pele e cabelo</label>
                 </div>
-                <div id="feedback-q4" class="feedback"></div>
+                <div class="feedback">
+                    <p><strong>Resposta Correta: b) Analisa os padrões de beleza socialmente construídos</strong></p>
+                    <p>A sociologia estuda como a indústria de cosméticos influencia e é influenciada pelos padrões de beleza socialmente construídos.</p>
+                    <p><strong>Por que não é as outras:</strong></p>
+                    <p>a) O estudo das reações químicas é objeto da química, não da sociologia.</p>
+                    <p>c) O desenvolvimento de novas moléculas é feito por químicos, não sociólogos.</p>
+                    <p>d) O estudo da estrutura da pele e cabelo é realizado pela biologia e dermatologia.</p>
+                </div>
             </div>
             
             <div class="question">
                 <h3>5. Qual a propriedade mais notável do ácido hialurônico?</h3>
                 <div class="options">
-                    <label><input type="radio" name="q5" value="a"> a) Sua capacidade de tingimento</label>
-                    <label><input type="radio" name="q5" value="b"> b) Seu poder de limpeza profunda</label>
-                    <label><input type="radio" name="q5" value="c"> c) Sua capacidade de reter água</label>
-                    <label><input type="radio" name="q5" value="d"> d) Seu alto poder antioxidante</label>
+                    <label class="incorrect-answer">a) Sua capacidade de tingimento</label>
+                    <label class="incorrect-answer">b) Seu poder de limpeza profunda</label>
+                    <label class="correct-answer">c) Sua capacidade de reter água</label>
+                    <label class="incorrect-answer">d) Seu alto poder antioxidante</label>
                 </div>
-                <div id="feedback-q5" class="feedback"></div>
+                <div class="feedback">
+                    <p><strong>Resposta Correta: c) Sua capacidade de reter água</strong></p>
+                    <p>O ácido hialurônico é conhecido por sua capacidade de reter até 1000 vezes seu peso em água, proporcionando hidratação intensa à pele.</p>
+                    <p><strong>Por que não é as outras:</strong></p>
+                    <p>a) O ácido hialurônico não tem propriedades de tingimento.</p>
+                    <p>b) Sua função não é limpeza, mas sim hidratação.</p>
+                    <p>d) Embora tenha algum efeito antioxidante, não é esta sua propriedade mais notável.</p>
+                </div>
             </div>
             
             <div class="question">
                 <h3>6. Qual destes NÃO é um impacto ambiental associado aos cosméticos?</h3>
                 <div class="options">
-                    <label><input type="radio" name="q6" value="a"> a) Microplásticos em esfoliantes</label>
-                    <label><input type="radio" name="q6" value="b"> b) Embalagens não biodegradáveis</label>
-                    <label><input type="radio" name="q6" value="c"> c) Aumento da camada de ozônio</label>
-                    <label><input type="radio" name="q6" value="d"> d) Poluição por produtos não biodegradáveis</label>
+                    <label class="incorrect-answer">a) Microplásticos em esfoliantes</label>
+                    <label class="incorrect-answer">b) Embalagens não biodegradáveis</label>
+                    <label class="correct-answer">c) Aumento da camada de ozônio</label>
+                    <label class="incorrect-answer">d) Poluição por produtos não biodegradáveis</label>
                 </div>
-                <div id="feedback-q6" class="feedback"></div>
+                <div class="feedback">
+                    <p><strong>Resposta Correta: c) Aumento da camada de ozônio</strong></p>
+                    <p>Os cosméticos não causam aumento da camada de ozônio. Pelo contrário, alguns compostos voláteis podem contribuir para a degradação do ozônio.</p>
+                    <p><strong>Por que não é as outras:</strong></p>
+                    <p>a) Microplásticos em esfoliantes são sim um problema ambiental conhecido.</p>
+                    <p>b) Embalagens não biodegradáveis contribuem para o acúmulo de resíduos no meio ambiente.</p>
+                    <p>d) Produtos não biodegradáveis podem sim causar poluição ambiental.</p>
+                </div>
             </div>
             
             <div class="question">
                 <h3>7. Por que a dimeticona é amplamente utilizada em produtos capilares?</h3>
                 <div class="options">
-                    <label><input type="radio" name="q7" value="a"> a) Por seu baixo custo de produção</label>
-                    <label><input type="radio" name="q7" value="b"> b) Por sua capacidade de tingir os fios</label>
-                    <label><input type="radio" name="q7" value="c"> c) Por sua capacidade de preencher fissuras na cutícula capilar</label>
-                    <label><input type="radio" name="q7" value="d"> d) Por seu poder de limpeza profunda</label>
+                    <label class="incorrect-answer">a) Por seu baixo custo de produção</label>
+                    <label class="incorrect-answer">b) Por sua capacidade de tingir os fios</label>
+                    <label class="correct-answer">c) Por sua capacidade de preencher fissuras na cutícula capilar</label>
+                    <label class="incorrect-answer">d) Por seu poder de limpeza profunda</label>
                 </div>
-                <div id="feedback-q7" class="feedback"></div>
+                <div class="feedback">
+                    <p><strong>Resposta Correta: c) Por sua capacidade de preencher fissuras na cutícula capilar</strong></p>
+                    <p>A dimeticona é uma silicona que preenche as fissuras na cutícula capilar, reduzindo o atrito entre os fios e proporcionando brilho e maciez.</p>
+                    <p><strong>Por que não é as outras:</strong></p>
+                    <p>a) Embora tenha custo acessível, não é esta a principal razão de seu uso.</p>
+                    <p>b) A dimeticona não tinge os fios, apenas condiciona.</p>
+                    <p>d) Sua função não é limpeza, mas sim condicionamento.</p>
+                </div>
             </div>
             
             <div class="question">
                 <h3>8. Qual a principal função dos tensoativos em shampoos?</h3>
                 <div class="options">
-                    <label><input type="radio" name="q8" value="a"> a) Colorir os fios</label>
-                    <label><input type="radio" name="q8" value="b"> b) Remover sujeira e óleos</label>
-                    <label><input type="radio" name="q8" value="c"> c) Conservar o produto</label>
-                    <label><input type="radio" name="q8" value="d"> d) Aumentar a viscosidade</label>
+                    <label class="incorrect-answer">a) Colorir os fios</label>
+                    <label class="correct-answer">b) Remover sujeira e óleos</label>
+                    <label class="incorrect-answer">c) Conservar o produto</label>
+                    <label class="incorrect-answer">d) Aumentar a viscosidade</label>
                 </div>
-                <div id="feedback-q8" class="feedback"></div>
+                <div class="feedback">
+                    <p><strong>Resposta Correta: b) Remover sujeira e óleos</strong></p>
+                    <p>Tensoativos são surfactantes que reducem a tensão superficial, permitiendo a remoção de sujeira e óleos durante a lavagem.</p>
+                    <p><strong>Por que não é as outras:</strong></p>
+                    <p>a) A coloração é feita por pigmentos, não por tensoativos.</p>
+                    <p>c) A conservação é função de compostos específicos como os parabenos.</p>
+                    <p>d) O aumento de viscosidade é feito por espessantes, não por tensoativos.</p>
+                </div>
             </div>
             
             <div class="question">
                 <h3>9. Qual destes compostos é um exemplo de silicona utilizada em cosméticos?</h3>
                 <div class="options">
-                    <label><input type="radio" name="q9" value="a"> a) Ácido salicílico</label>
-                    <label><input type="radio" name="q9" value="b"> b) Glicerina</label>
-                    <label><input type="radio" name="q9" value="c"> c) Ciclometicona</label>
-                    <label><input type="radio" name="q9" value="d"> d) Ácido cítrico</label>
+                    <label class="incorrect-answer">a) Ácido salicílico</label>
+                    <label class="incorrect-answer">b) Glicerina</label>
+                    <label class="correct-answer">c) Ciclometicona</label>
+                    <label class="incorrect-answer">d) Ácido cítrico</label>
                 </div>
-                <div id="feedback-q9" class="feedback"></div>
+                <div class="feedback">
+                    <p><strong>Resposta Correta: c) Ciclometicona</strong></p>
+                    <p>A ciclometicona é uma silicona volátil muito utilizada em produtos capilares e para a pele para proporcionar toque seco e sedoso.</p>
+                    <p><strong>Por que não é as outras:</strong></p>
+                    <p>a) O ácido salicílico é um esfoliante químico, não uma silicona.</p>
+                    <p>b) A glicerina é um umectante, não uma silicona.</p>
+                    <p>d) O ácido cítrico é usado para ajuste de pH, não é uma silicona.</p>
+                </div>
             </div>
             
             <div class="question">
                 <h3>10. Qual a principal função dos conservantes em cosméticos?</h3>
                 <div class="options">
-                    <label><input type="radio" name="q10" value="a"> a) Proporcionar fragrância</label>
-                    <label><input type="radio" name="q10" value="b"> b) Dar cor ao produto</label>
-                    <label><input type="radio" name="q10" value="c"> c) Prevenir crescimento microbiano</label>
-                    <label><input type="radio" name="q10" value="d"> d) Aumentar a absorção na pele</label>
+                    <label class="incorrect-answer">a) Proporcionar fragrância</label>
+                    <label class="incorrect-answer">b) Dar cor ao produto</label>
+                    <label class="correct-answer">c) Prevenir crescimento microbiano</label>
+                    <label class="incorrect-answer">d) Aumentar a absorção na pele</label>
                 </div>
-                <div id="feedback-q10" class="feedback"></div>
+                <div class="feedback">
+                    <p><strong>Resposta Correta: c) Prevenir crescimento microbiano</strong></p>
+                    <p>Os conservantes têm como função principal prevenir a contaminação por microorganismos, prolongando a vida útil do produto.</p>
+                    <p><strong>Por que não é as outras:</strong></p>
+                    <p>a) A fragrância é proporcionada por compostos aromáticos específicos.</p>
+                    <p>b) A cor é dada por pigmentos e corantes.</p>
+                    <p>d) A absorção na pele é facilitada por veículos e penetração, não por conservantes.</p>
+                </div>
             </div>
-            
-            <button class="submit" onclick="checkAllAnswers()">Verificar Todas as Respostas</button>
         </section>
         
         <footer>
             <p>Trabalho de Química - Grupo: Richard, Heloísa, Matheus, Otávio, Emanuel e Davi</p>
             <p class="conclusion">"A química dos cosméticos revela a interseção entre ciência, beleza e bem-estar, demonstrando como a inovação científica pode elevar tanto a saúde da pele quanto a autoestima individual."</p>
-            <p>© 2023 - Todos os direitos reservados</p>
+            <p>© 2025 - Todos os direitos reservados</p>
         </footer>
     </div>
 
-    <!-- Tela de Conclusão -->
-    <div class="outro-overlay" id="outroOverlay">
-        <div class="outro-text">Apresentação Concluída</div>
-        <div class="outro-subtext">Química dos Cosméticos - Explorada com Sucesso</div>
-    </div>
-
     <script>
-        // Respostas corretas
-        const correctAnswers = {
-            q1: "b",
-            q2: "c",
-            q3: "b",
-            q4: "b",
-            q5: "c",
-            q6: "c",
-            q7: "c",
-            q8: "b",
-            q9: "c",
-            q10: "c"
-        };
-        
-        // Justificativas para cada questão
-        const explanations = {
-            q1: {
-                correct: "b) Formar barreira protetora na pele",
-                explanation: "Os ácidos graxos formam uma barreira oclusiva na pele, prevenindo a perda de água transepidérmica e mantendo a hidratação cutânea.",
-                incorrect: {
-                    a: "A limpeza profunda é função dos tensoativos, não dos ácidos graxos.",
-                    c: "A cor é fornecida por pigmentos e corantes, não por ácidos graxos.",
-                    d: "A conservação é feita por compostos como parabenos, não por ácidos graxos."
-                }
-            },
-            q2: {
-                correct: "c) Avobenzona",
-                explanation: "A avobenzona é um filtro solar orgânico que absorve radiação UVA, protegendo a pele contra os danos causados pela exposição solar.",
-                incorrect: {
-                    a: "O ácido esteárico é um emulsionante e espessante, não absorve radiação UV.",
-                    b: "A dimeticona é uma silicona usada para condicionar cabelos e pele, não para proteção solar.",
-                    d: "O metilparabeno é um conservante, não possui propriedades de absorção de UV."
-                }
-            },
-            q3: {
-                correct: "b) Sua possível atividade estrogênica no organismo",
-                explanation: "Estudos controversos sugerem que parabenos podem ter atividade estrogênica fraca, mas órgãos reguladores consideram seguro em baixas concentrações.",
-                incorrect: {
-                    a: "O custo de produção dos parabenos é baixo, não sendo esta a controvérsia principal.",
-                    c: "Os parabenos são eficientes como conservantes, esta não é a questão controversa.",
-                    d: "Parabenos não causam mudança de cor nos produtos, esta não é uma característica associada a eles."
-                }
-            },
-            q4: {
-                correct: "b) Analisa os padrões de beleza socialmente construídos",
-                explanation: "A sociologia estuda como a indústria de cosméticos influencia e é influenciada pelos padrões de beleza socialmente construídos.",
-                incorrect: {
-                    a: "O estudo das reações químicas é objeto da química, não da sociologia.",
-                    c: "O desenvolvimento de novas moléculas é feito por químicos, não sociólogos.",
-                    d: "O estudo da estrutura da pele e cabelo é realizado pela biologia e dermatologia."
-                }
-            },
-            q5: {
-                correct: "c) Sua capacidade de reter água",
-                explanation: "O ácido hialurônico é conhecido por sua capacidade de reter até 1000 vezes seu peso em água, proporcionando hidratação intensa à pele.",
-                incorrect: {
-                    a: "O ácido hialurônico não tem propriedades de tingimento.",
-                    b: "Sua função não é limpeza, mas sim hidratação.",
-                    d: "Embora tenha algum efeito antioxidante, não é esta sua propriedade mais notável."
-                }
-            },
-            q6: {
-                correct: "c) Aumento da camada de ozônio",
-                explanation: "Os cosméticos não causam aumento da camada de ozônio. Pelo contrário, alguns compostos voláteis podem contribuir para a degradação do ozônio.",
-                incorrect: {
-                    a: "Microplásticos em esfoliantes são sim um problema ambiental conhecido.",
-                    b: "Embalagens não biodegradáveis contribuem para o acúmulo de resíduos no meio ambiente.",
-                    d: "Produtos não biodegradáveis podem sim causar poluição ambiental."
-                }
-            },
-            q7: {
-                correct: "c) Por sua capacidade de preencher fissuras na cutícula capilar",
-                explanation: "A dimeticona é uma silicona que preenche as fissuras na cutícula capilar, reduzindo o atrito entre os fios e proporcionando brilho e maciez.",
-                incorrect: {
-                    a: "Embora tenha custo acessível, não é esta a principal razão de seu uso.",
-                    b: "A dimeticona não tinge os fios, apenas condiciona.",
-                    d: "Sua função não é limpeza, mas sim condicionamento."
-                }
-            },
-            q8: {
-                correct: "b) Remover sujeira e óleos",
-                explanation: "Tensoativos são surfactantes que reduzem a tensão superficial, permitindo a remoção de sujeira e óleos durante a lavagem.",
-                incorrect: {
-                    a: "A coloração é feita por pigmentos, não por tensoativos.",
-                    c: "A conservação é função de compostos específicos como os parabenos.",
-                    d: "O aumento de viscosidade é feito por espessantes, não por tensoativos."
-                }
-            },
-            q9: {
-                correct: "c) Ciclometicona",
-                explanation: "A ciclometicona é uma silicona volátil muito utilizada em produtos capilares e para a pele para proporcionar toque seco e sedoso.",
-                incorrect: {
-                    a: "O ácido salicílico é um esfoliante químico, não uma silicona.",
-                    b: "A glicerina é um umectante, não uma silicona.",
-                    d: "O ácido cítrico é usado para ajuste de pH, não é uma silicona."
-                }
-            },
-            q10: {
-                correct: "c) Prevenir crescimento microbiano",
-                explanation: "Os conservantes têm como função principal prevenir a contaminação por microorganismos, prolongando a vida útil do produto.",
-                incorrect: {
-                    a: "A fragrância é proporcionada por compostos aromáticos específicos.",
-                    b: "A cor é dada por pigmentos e corantes.",
-                    d: "A absorção na pele é facilitada por veículos e penetração, não por conservantes."
-                }
-            }
-        };
-        
-        // Adiciona event listeners para todas as questões
-        document.querySelectorAll('.options input').forEach(input => {
-            input.addEventListener('change', function() {
-                checkAnswer(this.name, this.value);
-            });
-        });
-        
-        // Função para verificar uma resposta individual
-        function checkAnswer(questionName, selectedValue) {
-            const feedbackElement = document.getElementById(`feedback-${questionName}`);
-            const correctAnswer = correctAnswers[questionName];
-            const questionData = explanations[questionName];
-            
-            if (selectedValue === correctAnswer) {
-                feedbackElement.innerHTML = `<p><strong>Resposta Correta!</strong> ${questionData.explanation}</p>`;
-                feedbackElement.className = "feedback correct";
-            } else {
-                let incorrectExplanation = "";
-                if (questionData.incorrect && questionData.incorrect[selectedValue]) {
-                    incorrectExplanation = `<br><em>Por que não é esta: ${questionData.incorrect[selectedValue]}</em>`;
-                }
-                
-                feedbackElement.innerHTML = `<p><strong>Resposta Incorreta.</strong> A alternativa correta é ${questionData.correct}. ${questionData.explanation}${incorrectExplanation}</p>`;
-                feedbackElement.className = "feedback incorrect";
-            }
-            
-            feedbackElement.style.display = "block";
-        }
-        
-        // Função para verificar todas as respostas
-        function checkAllAnswers() {
-            for (let i = 1; i <= 10; i++) {
-                const selected = document.querySelector(`input[name=q${i}]:checked`);
-                if (selected) {
-                    checkAnswer(`q${i}`, selected.value);
-                }
-            }
-            
-            // Scroll para o final do questionário
-            document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        // Função para rolar até uma seção específica
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-        
-        // Função para mostrar a tela de conclusão
-        function showConclusion() {
-            const outroOverlay = document.getElementById('outroOverlay');
-            outroOverlay.style.opacity = "1";
-            outroOverlay.style.pointerEvents = "auto";
-            
-            // Esconder a tela de conclusão após 5 segundos
-            setTimeout(() => {
-                outroOverlay.style.opacity = "0";
-                outroOverlay.style.pointerEvents = "none";
-            }, 5000);
-        }
-        
         // Inicialização quando o documento estiver carregado
         document.addEventListener('DOMContentLoaded', function() {
-            // Esconder a tela de introdução após 3 segundos
-            setTimeout(() => {
-                const introOverlay = document.getElementById('introOverlay');
-                const mainContent = document.getElementById('mainContent');
-                
-                introOverlay.style.opacity = "0";
-                setTimeout(() => {
-                    introOverlay.style.display = "none";
-                    mainContent.style.opacity = "1";
-                }, 1000);
-            }, 3000);
-            
-            // Adicionar animação de entrada para as seções
-            const sections = document.querySelectorAll('section');
-            
-            sections.forEach((section, index) => {
-                section.style.animationDelay = `${index * 0.2}s`;
-            });
-            
             // Adicionar efeito de digitação ao título
             const title = document.querySelector('.cover-content h1');
             title.classList.add('typewriter');
-            
-            // Embaralhar as questões
-            shuffleQuestions();
         });
-        
-        // Função para embaralhar as questões
-        function shuffleQuestions() {
-            const quizContainer = document.getElementById('quiz');
-            const questions = Array.from(quizContainer.querySelectorAll('.question'));
-            
-            // Remover todas as questões do container
-            questions.forEach(question => {
-                quizContainer.removeChild(question);
-            });
-            
-            // Embaralhar a ordem das questões
-            for (let i = questions.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [questions[i], questions[j]] = [questions[j], questions[i]];
-            }
-            
-            // Reinserir as questões no container
-            questions.forEach(question => {
-                quizContainer.insertBefore(question, quizContainer.querySelector('.submit'));
-            });
-        }
     </script>
 </body>
 </html>
