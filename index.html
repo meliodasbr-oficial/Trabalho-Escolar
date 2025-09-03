@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Química dos Cosméticos - Trabalho Escolar</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Química dos Cosméticos</title>
     <style>
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --accent: #ffbe0b;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -13,427 +20,196 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        :root {
-            --primary: #6a11cb;
-            --secondary: #2575fc;
-            --accent: #ff4e8d;
-            --light: #f5f7fa;
-            --dark: #333;
-            --text: #444;
-            --correct: #4caf50;
-            --incorrect: #f44336;
-        }
-        
         body {
-            background: white;
-            color: var(--text);
+            background-color: var(--light);
+            color: var(--dark);
             line-height: 1.6;
-            padding: 15px;
-            max-width: 100%;
             overflow-x: hidden;
         }
         
         .container {
-            max-width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 10px;
+            padding: 0 20px;
         }
         
-        /* Capa Principal */
-        .cover-container {
+        /* Capa */
+        .cover {
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(120deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
             text-align: center;
-            border-radius: 15px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+            color: white;
+            padding: 20px;
+        }
+        
+        .cover h1 {
+            font-size: 2.5rem;
             margin-bottom: 20px;
-            padding: 40px 20px;
-            page-break-after: always;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
-        .cover-content h1 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-            font-weight: 700;
-            letter-spacing: 1px;
-            line-height: 1.2;
-        }
-        
-        .cover-content p {
-            font-size: 1rem;
-            margin: 8px 0;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-        }
-        
-        .cover-content .subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            font-weight: 300;
+        .cover p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
         }
         
         /* Seções */
         section {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            page-break-inside: avoid;
+            padding: 60px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s, transform 1s;
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
             color: var(--primary);
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #eaeaea;
-            font-size: 1.6rem;
+            text-align: center;
         }
         
         h3 {
+            font-size: 1.5rem;
+            margin: 20px 0;
             color: var(--secondary);
-            margin: 15px 0 10px;
-            font-size: 1.3rem;
-        }
-        
-        h4 {
-            color: var(--accent);
-            margin: 12px 0 6px;
-            font-size: 1.1rem;
         }
         
         p {
-            margin-bottom: 12px;
-            text-align: justify;
-            font-size: 0.95rem;
-        }
-        
-        ul {
-            padding-left: 18px;
             margin-bottom: 15px;
+            font-size: 1.1rem;
         }
         
-        li {
-            margin-bottom: 8px;
-            font-size: 0.95rem;
+        /* Animações de digitação */
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid var(--primary);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary) }
         }
         
         /* Fórmulas */
-        .formulas {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        .formula {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             margin: 20px 0;
-        }
-        
-        .formula-card {
-            background: var(--light);
-            border-radius: 12px;
-            padding: 15px;
-            border: 1px solid #ddd;
-        }
-        
-        .formula-title {
-            color: var(--primary);
             text-align: center;
-            margin-bottom: 15px;
-            font-weight: bold;
-            font-size: 1.1rem;
         }
         
-        .formula-structure {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 60px;
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: var(--dark);
-            position: relative;
-            overflow: hidden;
-            padding: 12px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            text-align: center;
-            border: 1px solid #eee;
-        }
-        
-        .formula-description {
-            margin-top: 15px;
-            padding: 12px;
-            background: white;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            border: 1px solid #eee;
-        }
-        
-        /* Moléculas */
-        .molecules-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .molecule-card {
-            width: 140px;
-            height: 140px;
-            perspective: 1000px;
-        }
-        
-        .molecule-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-        }
-        
-        .molecule-front, .molecule-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: visible;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 12px;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
-        
-        .molecule-front {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-        }
-        
-        .molecule-back {
-            background: white;
-            color: var(--dark);
-            font-size: 0.85rem;
+        .formula img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
         }
         
         /* Questionário */
         .quiz {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid #ddd;
-            page-break-before: always;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 30px 0;
         }
         
         .question {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: var(--light);
-            border-radius: 10px;
-            border: 1px solid #ddd;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
         }
         
-        .options label {
-            display: block;
-            margin: 8px 0;
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .option {
             padding: 10px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            border: 1px solid #eee;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
         
-        .correct-answer {
-            background-color: rgba(76, 175, 80, 0.1) !important;
-            border-left: 4px solid var(--correct) !important;
-            font-weight: bold;
+        .option:hover {
+            background-color: #e1e1e1;
+        }
+        
+        .option.selected {
+            background-color: var(--secondary);
+            color: white;
         }
         
         .feedback {
-            margin-top: 15px;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            background-color: rgba(76, 175, 80, 0.1);
-            border-left: 4px solid var(--correct);
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
         }
         
         /* Rodapé */
         footer {
+            background-color: var(--dark);
+            color: white;
             text-align: center;
             padding: 20px;
-            margin-top: 30px;
-            color: var(--text);
-            font-size: 0.9rem;
-            background: white;
-            border-radius: 15px;
-            border: 1px solid #ddd;
-            page-break-before: always;
-        }
-        
-        .conclusion {
-            font-weight: bold;
-            color: var(--primary);
-            margin-top: 12px;
-            font-size: 1rem;
-        }
-        
-        /* Química estrutural */
-        .chemical-formula {
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            text-align: center;
-            padding: 15px;
-            background: var(--light);
-            border-radius: 10px;
-            border: 1px solid #ddd;
-        }
-        
-        /* Info boxes */
-        .info-box {
-            background: var(--light);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            border-left: 4px solid var(--secondary);
-            border: 1px solid #ddd;
-        }
-        
-        .info-title {
-            color: var(--secondary);
-            font-weight: bold;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1rem;
-        }
-        
-        /* Tabela */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            font-size: 0.85rem;
-            border: 1px solid #ddd;
-        }
-        
-        th, td {
-            padding: 10px 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        th {
-            background-color: var(--light);
-            color: var(--primary);
-        }
-        
-        /* Media query para impressão */
-        @media print {
-            body {
-                padding: 0;
-                background: white;
-            }
-            
-            .container {
-                padding: 0;
-                max-width: 100%;
-            }
-            
-            section, .quiz, footer, .info-box, .formula-card, .formula-structure, 
-            .formula-description, .molecule-front, .molecule-back, table {
-                border: 1px solid #999 !important;
-                page-break-inside: avoid;
-            }
-            
-            .cover-container {
-                page-break-after: always;
-                height: auto;
-            }
-            
-            .quiz {
-                page-break-before: always;
-            }
-            
-            footer {
-                page-break-before: always;
-            }
-            
-            nav {
-                display: none;
-            }
-            
-            .scroll-down {
-                display: none;
-            }
-            
-            .molecules-animation {
-                display: none;
-            }
-            
-            .intro-overlay, .outro-overlay {
-                display: none;
-            }
-        }
-        
-        /* Ajustes para telas muito pequenas */
-        @media (max-width: 360px) {
-            .cover-content h1 {
-                font-size: 1.8rem;
-            }
-            
-            .cover-content .subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .molecule-card {
-                width: 120px;
-                height: 120px;
-            }
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Capa Principal -->
-        <div class="cover-container">
-            <div class="cover-content">
-                <h1>QUÍMICA DOS COSMÉTICOS</h1>
-                <p class="subtitle">Compostos Orgânicos e Suas Aplicações</p>
-                <p>Funções orgânicas em cremes, shampoos e maquiagens</p>
-                <p>Impacto na saúde e na autoestima</p>
-                <p>Turma: 3º Ano - Data: Setembro 2025</p>
-                <p>Integrantes: Richard, Heloísa, Matheus, Otávio, Emanuel e Davi</p>
-            </div>
-        </div>
+    <!-- Capa -->
+    <div class="cover">
+        <h1 class="typewriter">Química dos Cosméticos</h1>
+        <p>Richard Aghamenon, Heloísa, Emanuel, Otávio, Davi D'avila</p>
+        <p>3º Ano D - Setembro 2025</p>
+    </div>
 
+    <div class="container">
         <!-- Introdução -->
         <section id="introducao">
             <h2>Introdução</h2>
-            <p>Os cosméticos são produtos utilizados para higiene, embelezamento e alteração da aparência. A química orgânica desempenha um papel fundamental na composição desses produtos, determinando suas propriedades, eficácia e segurança.</p>
-            
-            <div class="info-box">
-                <div class="info-title">
-                    <i class="fas fa-flask"></i>
-                    <span>Contextualização do Tema</span>
-                </div>
-                <p>A indústria de cosméticos movimenta bilhões de dólares anualmente e está intrinsecamente ligada aos avanços da química orgânica. Desde a antiguidade, os seres humanos utilizam substâncias naturais e sintéticas para realçar a beleza, mas foi com o desenvolvimento da química orgânica no século XIX que a cosmética moderna se estabeleceu.</p>
-            </div>
-            
-            <div class="info-box">
-                <div class="info-title">
-                    <i class="fas fa-bullseye"></i>
-                    <span>Objetivos do Trabalho</span>
-                </div>
-                <p>Este trabalho tem como objetivo explorar as funções orgânicas presentes em cosméticos, seus efeitos na saúde humana, impactos na autoestima e relações interdisciplinares com outras áreas do conhecimento, como Biologia, Sociologia, Física e Artes.</p>
-            </div>
+            <p>Os cosméticos são produtos que fazem parte do nosso dia a dia, utilizados para higiene, embelezamento e cuidados com a pele e cabelos. A química orgânica está presente na composição desses produtos, com diversas funções orgânicas que determinam suas propriedades e eficácia.</p>
+            <p>Este trabalho tem como objetivo explorar as funções orgânicas presentes em cosméticos como cremes, shampoos e maquiagens, além de analisar seus impactos na saúde, autoestima e meio ambiente.</p>
         </section>
 
         <!-- Desenvolvimento -->
@@ -441,403 +217,343 @@
             <h2>Desenvolvimento</h2>
             
             <h3>Funções Orgânicas em Cosméticos</h3>
-            <p>Os cosméticos contêm diversas funções orgânicas que determinam suas propriedades. Estas substâncias são cuidadosamente selecionadas para proporcionar os efeitos desejados, como limpeza, hidratação, proteção e embelezamento.</p>
+            <p>Os cosméticos possuem em sua composição diversas funções orgânicas que conferem características específicas aos produtos:</p>
             
-            <div class="molecules-container">
-                <div class="molecule-card">
-                    <div class="molecule-inner">
-                        <div class="molecule-front">
-                            <h4>Ácidos Graxos</h4>
-                            <p>Presentes em hidratantes</p>
-                        </div>
-                        <div class="molecule-back">
-                            <p>Formam uma barreira protetora na pele, prevenindo perda de água e mantendo a hidratação. Exemplos: ácido esteárico, ácido oléico.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="molecule-card">
-                    <div class="molecule-inner">
-                        <div class="molecule-front">
-                            <h4>Siliconas</h4>
-                            <p>Shampoos e condicionadores</p>
-                        </div>
-                        <div class="molecule-back">
-                            <p>Suavizam o cabelo, selam as cutículas e proporcionam brilho, reduzindo o frizz. Exemplos: dimeticona, ciclometicona.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="molecule-card">
-                    <div class="molecule-inner">
-                        <div class="molecule-front">
-                            <h4>Parabenos</h4>
-                            <p>Conservantes</p>
-                        </div>
-                        <div class="molecule-back">
-                            <p>Previnem crescimento microbiano, mas seu uso é controverso devido a possíveis efeitos na saúde. Exemplos: metilparabeno, propilparabeno.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="molecule-card">
-                    <div class="molecule-inner">
-                        <div class="molecule-front">
-                            <h4>Ésteres</h4>
-                            <p>Emolientes e fragrâncias</p>
-                        </div>
-                        <div class="molecule-back">
-                            <p>Atuam como emolientes suaves e veículos para fragrâncias. Exemplos: benzoato de benzila, acetato de benzila.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="formula">
+                <h4>Ésteres</h4>
+                <p>Presentes em fragrâncias e flavorizantes. Exemplo: Acetato de benzila (aroma de jasmim)</p>
+                <p>Fórmula estrutural: CH₃COOCH₂C₆H₅</p>
+            </div>
+            
+            <div class="formula">
+                <h4>Álcoois</h4>
+                <p>Utilizados como solventes e emolientes. Exemplo: Glicerina (umectante)</p>
+                <p>Fórmula estrutural: HOCH₂CH(OH)CH₂OH</p>
+            </div>
+            
+            <div class="formula">
+                <h4>Ácidos carboxílicos</h4>
+                <p>Presentes em conservantes e reguladores de pH. Exemplo: Ácido benzoico (conservante)</p>
+                <p>Fórmula estrutural: C₆H₅COOH</p>
+            </div>
+            
+            <div class="formula">
+                <h4>Éteres</h4>
+                <p>Utilizados como solventes. Exemplo: Propilenoglicol (umedecente)</p>
+                <p>Fórmula estrutural: CH₃CH(OH)CH₂OH</p>
             </div>
             
             <h3>Aplicações no Cotidiano</h3>
-            <p>No dia a dia, utilizamos diversos cosméticos que contêm compostos orgânicos específicos:</p>
-            
-            <div style="overflow-x: auto;">
-                <table>
-                    <tr>
-                        <th>Produto</th>
-                        <th>Compostos Orgânicos</th>
-                        <th>Função</th>
-                    </tr>
-                    <tr>
-                        <td>Cremes hidratantes</td>
-                        <td>Ésteres e ácidos graxos</td>
-                        <td>Formam uma barreira oclusiva na pele</td>
-                    </tr>
-                    <tr>
-                        <td>Shampoos</td>
-                        <td>Tensoativos (sulfatos) e siliconas</td>
-                        <td>Removem sujeita e condicionam</td>
-                    </tr>
-                    <tr>
-                        <td>Maquiagens</td>
-                        <td>Pigmentos orgânicos e polímeros</td>
-                        <td>Proporcionam cor, textura e durabilidade</td>
-                    </tr>
-                    <tr>
-                        <td>Protetores solares</td>
-                        <td>Compostos orgânicos como avobenzona</td>
-                        <td>Absorvem radiação UV</td>
-                    </tr>
-                    <tr>
-                        <td>Desodorantes</td>
-                        <td>Parabenos e triclosan</td>
-                        <td>Agentes antibacterianos</td>
-                    </tr>
-                </table>
-            </div>
+            <p>No nosso dia a dia, utilizamos diversos produtos cosméticos que contêm compostos orgânicos:</p>
+            <ul>
+                <li>Shampoos: Contêm tensoativos (como lauril éter sulfato de sódio) que removem a sujeira dos cabelos.</li>
+                <li>Cremes hidratantes: Possuem emolientes como óleos e glicerina que evitam a perda de água da pele.</li>
+                <li>Maquiagens: Pigmentos orgânicos e inorgânicos conferem cor aos produtos.</li>
+                <li>Protetores solares: Compostos orgânicos como avobenzona absorvem radiação UV.</li>
+            </ul>
             
             <h3>Relações Interdisciplinares</h3>
             
-            <div class="info-box">
-                <div class="info-title">
-                    <i class="fas fa-dna"></i>
-                    <span>Biologia: Pele e Cabelo</span>
-                </div>
-                <p>A pele é o maior órgão do corpo humano, composta por epiderme, derme e hipoderme. Os cosméticos interagem com essas estruturas, podendo nutrir, hidratar ou causar reações adversas. O cabelo, por sua vez, é formado por queratina, e produtos capilares atuam nas cutículas para alterar aparência e textura.</p>
-            </div>
+            <h4>Biologia: Pele e Cabelo</h4>
+            <p>O estudo da estrutura da pele e dos cabelos é fundamental para desenvolver cosméticos eficazes. A pele é formada por três camadas (epiderme, derme e hipoderme) e os cosméticos atuam principalmente na epiderme. Os cabelos são constituídos por queratina, e shampoos e condicionadores são formulados para limpar e manter a integridade dos fios.</p>
             
-            <div class="info-box">
-                <div class="info-title">
-                    <i class="fas fa-users"></i>
-                    <span>Sociologia: Padrões de Beleza</span>
-                </div>
-                <p>A indústria de cosméticos é influenciada e influencia os padrões de belleza socialmente construídos, impactando a autoestima e autopercepção dos indivíduos. Através da publicidade, cria-se um ideal de beleza que muitas vezes é inatingível, o qui pode gerar insatisfação corporal.</p>
-            </div>
+            <h4>Sociologia: Padrões de Beleza</h4>
+            <p>A indústria de cosméticos está intimamente relacionada com os padrões de beleza estabelecidos pela sociedade. Estes padrões variam entre culturas e épocas históricas, influenciando o consumo de produtos cosméticos e afetando a autoestima das pessoas.</p>
             
-            <div class="info-box">
-                <div class="info-title">
-                    <i class="fas fa-atom"></i>
-                    <span>Física: Propriedades Ópticas</span>
-                </div>
-                <p>Pigmentos e partículas presentes em cosméticos alteram a reflexão da luz na pele, criando efeitos como brilho e cor. A física explica como partículas de mica em iluminadores refletem a luz, criando o efeito de glow na pele.</p>
-            </div>
+            <h4>Física: Emulsões e Coloides</h4>
+            <p>Muitos cosméticos são emulsões (misturas de água e óleo) estabilizadas por emulsionantes. O entendimento das propriedades físicas desses sistemas é essencial para a formulação de produtos estáveis e eficazes.</p>
             
-            <div class="info-box">
-                <div class="info-title">
-                    <i class="fas fa-palette"></i>
-                    <span>Artes: Teoria das Cores</span>
-                </div>
-                <p>A teoria das cores é fundamental no desenvolvimento de maquiagens que realçam características faciais e harmonizam com diferentes tons de pele. Corretivos coloridos utilizam o círculo cromático para neutralizar imperfeições.</p>
-            </div>
+            <h4>Geografia e Meio Ambiente</h4>
+            <p>A produção e descarte de cosméticos têm impactos ambientais significativos. O cultivo de matérias-primas, o processo industrial e a poluição por embalagens são questões geográficas e ambientais relevantes.</p>
+            
+            <h4>Artes</h4>
+            <p>A maquiagem é uma forma de expressão artística, utilizada tanto no cotidiano quanto em performances artísticas. As cores, texturas e técnicas de aplicação relacionam-se diretamente com conceitos artísticos.</p>
             
             <h3>Benefícios, Riscos e Impactos</h3>
             
             <h4>Benefícios</h4>
-            <p>Os cosméticos proporcionam hidratação, proteção solar, limpeza e embelezamento, contribuindo para a saúde da pele e cabelos, além de melhorar a autoestima e confiança pessoal.</p>
+            <ul>
+                <li>Promovem higiene e saúde</li>
+                <li>Protegem a pele contra agressões externas</li>
+                <li>Melhoram a autoestima</li>
+                <li>Possibilitam expressão pessoal</li>
+            </ul>
             
             <h4>Riscos</h4>
-            <p>Alguns compostos podem causar alergias, irritações ou até mesmo atuar como disruptores endócrinos. A regulamentação por órgãos como a ANVISA é essencial para garantir a segurança dos produtos.</p>
+            <ul>
+                <li>Reações alérgicas a componentes</li>
+                <li>Acúmulo de substâncias nocivas no organismo</li>
+                <li>Impacto ambiental pela produção e descarte</li>
+                <li>Fortalecimento de padrões de beleza irreais</li>
+            </ul>
             
-             <h4>Impactos ambientais</h4>
-            <p>Microplásticos em esfoliantes e embalagens não biodegradáveis contribuem para a poluição ambiental. A indústria tem buscado alternativas sustentáveis, como embalagens recicladas e fórmulas biodegradáveis.</p>
+            <h4>Impactos Socioambientais</h4>
+            <p>A indústria de cosméticos gera empregos e movimenta a economia, mas também pode explorar recursos naturais de forma não sustentável. O descarte inadequado de embalagens e resíduos contribui para a poluição ambiental. Além disso, a publicidade muitas vez reforça estereótipos e padrões de beleza inatingíveis, com impactos negativos na saúde mental.</p>
         </section>
 
-        <!-- Fórmulas Estruturais -->
-        <section id="formulas">
-            <h2>Fórmulas Estruturais</h2>
-            <p>Conheça as principais estruturas químicas presentes nos cosméticos:</p>
-            
-            <div class="formulas">
-                <div class="formula-card">
-                    <div class="formula-title">Ácido Esteárico (C₁₈H₃₆O₂)</div>
-                    <div class="formula-structure">
-                        CH₃-(CH₂)₁₆-COOH
-                    </div>
-                    <div class="formula-description">
-                        <p><strong>Função:</strong> Ácido carboxílico saturado de cadeia longa</p>
-                        <p><strong>Aplicação:</strong> Espessante e emulsionante em cremes e loções. Forma uma barreira lipídica na pele, prevenindo a perda de água transepidérmica.</p>
-                        <p><strong>Origem:</strong> Originalmente obtido de sebo animal, hoje é majoritariamente de origem vegetal (óleo de palma, coco).</p>
-                    </div>
-                </div>
-                
-                <div class="formula-card">
-                    <div class="formula-title">Dimeticona (C₆H₁₈OSi₂)</div>
-                    <div class="formula-structure">
-                        CH₃-[Si(CH₃)₂-O]ₙ-Si(CH₃)₃
-                    </div>
-                    <div class="formula-description">
-                        <p><strong>Função:</strong> Silicona linear</p>
-                        <p><strong>Aplicação:</strong> Agente condicionante em shampoos e condicionadores. Preenche fissuras na cutícula capilar, reduzindo o atrito entre fios e proporcionando brilho e maciez.</p>
-                        <p><strong>Vantagens:</strong> Baixa reatividade, não comedogênico, baixa toxidade e alta estabilidade térmica.</p>
-                    </div>
-                </div>
-                
-                <div class="formula-card">
-                    <div class="formula-title">Metilparabeno (C₈H₈O₃)</div>
-                    <div class="chemical-formula">
-                        HO-C(O)-O-CH₃
-                    </div>
-                    <div class="formula-description">
-                        <p><strong>Função:</strong> Éster do ácido p-hidroxibenzoico</p>
-                        <p><strong>Aplicação:</strong> Conservante antimicrobiano em cosméticos. Age interferindo no metabolismo energético de fungos e bactérias.</p>
-                        <p><strong>Controvérsias:</strong> Estudos controversos sugerem atividade estrogênica fraca, mas a ANVISA e FDA consideram seguro em concentrações de até 0,4%.</p>
-                    </div>
-                </div>
-                
-                <div class="formula-card">
-                    <div class="formula-title">Ácido Hialurônico (C₂₈H₄₄N₂O₂₃)</div>
-                    <div class="formula-structure">
-                        (C₁₄H₂₁NO₁₁)ₙ
-                    </div>
-                    <div class="formula-description">
-                        <p><strong>Função:</strong> Glicosaminoglicano</p>
-                        <p><strong>Aplicação:</strong> Hidratante intensivo em séruns e cremes. Capaz de reter até 1000 vezes seu peso em água, preenchendo espaços entre fibras de colágeno e elastina.</p>
-                        <p><strong>Observações:</strong> Presente naturalmente na pele humana, diminui com a idade. Em cosméticos, é usado em diferentes pesos moleculares para atuar em diversas camadas da pele.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <h3>Impacto na Saúde e Autoestima</h3>
-            <p>Os cosméticos, quando bem formulados, podem trazer benefícios tanto para a saúde da pele quanto para a autoestima. No entanto, é importante estar atento a componentes que podem causar alergias ou irritações.</p>
-            
-            <p>Do ponto de vista psicológico, o uso de cosméticos está relacionado à autoexpressão e à confiança pessoal, mas é essencial não associar a autoestima exclusivamente à aparência, promovendo uma relação saudável com os produtos de beleza.</p>
+        <!-- Conclusão -->
+        <section id="conclusao">
+            <h2>Conclusão</h2>
+            <p>A química dos cosméticos revela a complexidade e importância desses produtos em nossa sociedade. As funções orgânicas presentes em cremes, shampoos e maquiagens são fundamentais para suas propriedades e eficácia.</p>
+            <p>Além dos aspectos químicos, é crucial considerar os impactos multidimensionais dos cosméticos: desde seus benefícios para a saúde e autoestima até seus riscos e impactos ambientais. A interdisciplinaridade do tema mostra como a química dialoga com biologia, sociologia, física, geografia e artes.</p>
+            <p>Como consumidores, é importante estarmos informados sobre a composição dos produtos que utilizamos, buscando opções que equilibrem eficácia, segurança e responsabilidade ambiental. A conscientização sobre padrões de beleza realistas e saudáveis também é essencial para que os cosméticos cumpram seu papel de promover bem-estar sem reforçar ideais inatingíveis.</p>
         </section>
 
         <!-- Questionário -->
-        <section id="quiz" class="quiz">
+        <section id="questionario">
             <h2>Questionário</h2>
             <p>Teste seus conhecimentos sobre a química dos cosméticos:</p>
             
-            <div class="question">
-                <h3>1. Qual a principal função dos ácidos graxos em cosméticos?</h3>
-                <div class="options">
-                    <label class="incorrect-answer">a) Promover limpeza profunda</label>
-                    <label class="correct-answer">b) Formar barreira protetora na pele</label>
-                    <label class="incorrect-answer">c) Fornecer cor aos produtos</label>
-                    <label class="incorrect-answer">d) Conservar o produto</label>
+            <div class="quiz">
+                <div class="question">
+                    <h3>1. Qual função orgânica está presente na glicerina, comum em hidratantes?</h3>
+                    <div class="options">
+                        <div class="option" onclick="checkAnswer(this, 1, 'a')">a) Álcool</div>
+                        <div class="option" onclick="checkAnswer(this, 1, 'b')">b) Éster</div>
+                        <div class="option" onclick="checkAnswer(this, 1, 'c')">c) Ácido carboxílico</div>
+                        <div class="option" onclick="checkAnswer(this, 1, 'd')">d) Cetona</div>
+                    </div>
+                    <div class="feedback correct" id="feedback1">
+                        <strong>Correto!</strong> A glicerina (ou glicerol) é um triálcool, contendo três grupos hidroxila (-OH) em sua estrutura, o que confere suas propriedades umectantes.
+                    </div>
                 </div>
-                <div class="feedback">
-                    <p><strong>Resposta Correta: b) Formar barreira protetora na pele</strong></p>
-                    <p>Os ácidos graxos formam uma barreira oclusiva na pele, prevenindo a perda de água transepidérmica e mantendo a hidratação cutânea.</p>
-                    <p><strong>Por que não é as outras:</strong></p>
-                    <p>a) A limpeza profunda é função dos tensoativos, não dos ácidos graxos.</p>
-                    <p>c) A cor é fornecida por pigmentos e corantes, não por ácidos graxos.</p>
-                    <p>d) A conservação é feita por compostos como parabenos, não por ácidos graxos.</p>
+                
+                <div class="question">
+                    <h3>2. Qual composto é frequentemente utilizado como conservante em cosméticos?</h3>
+                    <div class="options">
+                        <div class="option" onclick="checkAnswer(this, 2, 'a')">a) Acetato de benzila</div>
+                        <div class="option" onclick="checkAnswer(this, 2, 'b')">b) Ácido benzoico</div>
+                        <div class="option" onclick="checkAnswer(this, 2, 'c')">c> Lauril éter sulfato de sódio</div>
+                        <div class="option" onclick="checkAnswer(this, 2, 'd')">d) Propilenoglicol</div>
+                    </div>
+                    <div class="feedback correct" id="feedback2">
+                        <strong>Correto!</strong> O ácido benzoico e seus sais (benzoatos) são amplamente utilizados como conservantes em cosméticos por suas propriedades antimicrobianas.
+                    </div>
                 </div>
-            </div>
-            
-            <div class="question">
-                <h3>2. Qual destes compostos é responsável por absorver radiação UV em protetores solares?</h3>
-                <div class="options">
-                    <label class="incorrect-answer">a) Ácido esteárico</label>
-                    <label class="incorrect-answer">b) Dimeticona</label>
-                    <label class="correct-answer">c) Avobenzona</label>
-                    <label class="incorrect-answer">d) Metilparabeno</label>
+                
+                <div class="question">
+                    <h3>3. Qual é a fórmula estrutural do ácido benzoico?</h3>
+                    <div class="options">
+                        <div class="option" onclick="checkAnswer(this, 3, 'a')">a) CH₃COOCH₂C₆H₅</div>
+                        <div class="option" onclick="checkAnswer(this, 3, 'b')">b) C₆H₅COOH</div>
+                        <div class="option" onclick="checkAnswer(this, 3, 'c')">c) HOCH₂CH(OH)CH₂OH</div>
+                        <div class="option" onclick="checkAnswer(this, 3, 'd')">d) CH₃(CH₂)₁₁OSO₃Na</div>
+                    </div>
+                    <div class="feedback correct" id="feedback3">
+                        <strong>Correto!</strong> O ácido benzoico possui a fórmula C₆H₅COOH, consistindo em um anel benzênico ligado a um grupo carboxila (-COOH).
+                    </div>
                 </div>
-                <div class="feedback">
-                    <p><strong>Resposta Correta: c) Avobenzona</strong></p>
-                    <p>A avobenzona é um filtro solar orgânico que absorve radiação UVA, protegendo a pele contra os danos causados pela exposição solar.</p>
-                    <p><strong>Por que não é as outras:</strong></p>
-                    <p>a) O ácido esteárico é um emulsionante e espessante, não absorve radiação UV.</p>
-                    <p>b) A dimeticona é uma silicona usada para condicionar cabelos e pele, não para proteção solar.</p>
-                    <p>d) O metilparabeno é um conservante, não possui propriedades de absorção de UV.</p>
+                
+                <div class="question">
+                    <h3>4. Qual função orgânica confere fragrância aos cosméticos?</h3>
+                    <div class="options">
+                        <div class="option" onclick="checkAnswer(this, 4, 'a')">a) Álcool</div>
+                        <div class="option" onclick="checkAnswer(this, 4, 'b')">b) Éster</div>
+                        <div class="option" onclick="checkAnswer(this, 4, 'c')">c) Éter</div>
+                        <div class="option" onclick="checkAnswer(this, 4, 'd')">d) Amina</div>
+                    </div>
+                    <div class="feedback correct" id="feedback4">
+                        <strong>Correto!</strong> Os ésteres são frequentemente responsáveis pelos aromas em cosméticos, como o acetato de benzila que confere aroma de jasmim.
+                    </div>
                 </div>
-            </div>
-            
-            <div class="question">
-                <h3>3. Qual a principal controvérsia associada aos parabenos?</h3>
-                <div class="options">
-                    <label class="incorrect-answer">a) Seu alto custo de produção</label>
-                    <label class="correct-answer">b) Sua possível atividade estrogênica no organismo</label>
-                    <label class="incorrect-answer">c) Sua ineficiência como conservantes</label>
-                    <label class="incorrect-answer">d) Sua capacidade de causar mudança de cor nos produtos</label>
+                
+                <div class="question">
+                    <h3>5. Qual componente do shampoo é responsável por formar espuma?</h3>
+                    <div class="options">
+                        <div class="option" onclick="checkAnswer(this, 5, 'a')">a) Emolientes</div>
+                        <div class="option" onclick="checkAnswer(this, 5, 'b')">b) Conservantes</div>
+                        <div class="option" onclick="checkAnswer(this, 5, 'c')">c) Tensoativos</div>
+                        <div class="option" onclick="checkAnswer(this, 5, 'd')">d) Umectantes</div>
+                    </div>
+                    <div class="feedback correct" id="feedback5">
+                        <strong>Correto!</strong> Tensoativos (ou surfactantes) como o lauril éter sulfato de sódio são responsáveis pela formação de espuma e pela remoção de sujeira e oleosidade.
+                    </div>
                 </div>
-                <div class="feedback">
-                    <p><strong>Resposta Correta: b) Sua possível atividade estrogênica no organismo</strong></p>
-                    <p>Estudos controversos sugerem que parabenos podem ter atividade estrogênica fraca, mas órgãos reguladores consideram seguro em baixas concentrações.</p>
-                    <p><strong>Por que não é as outras:</strong></p>
-                    <p>a) O custo de produção dos parabenos é baixo, não sendo esta a controvérsia principal.</p>
-                    <p>c) Os parabenos são eficientes como conservantes, esta não é a questão controversa.</p>
-                    <p>d) Parabenos não causam mudança de cor nos produtos, esta não é uma característica associada a eles.</p>
+                
+                <div class="question">
+                    <h3>6. Qual é a principal proteína constituinte dos cabelos?</h3>
+                    <div class="options">
+                        <div class="option" onclick="checkAnswer(this, 6, 'a')">a) Colágeno</div>
+                        <div class="option" onclick="checkAnswer(this, 6, 'b')">b) Queratina</div>
+                        <div class="option" onclick="checkAnswer(this, 6, 'c')">c) Elastina</div>
+                        <div class="option" onclick="checkAnswer(this, 6, 'd')">d) Melanina</div>
+                    </div>
+                    <div class="feedback correct" id="feedback6">
+                        <strong>Correto!</strong> A queratina é a proteína fibrosa que constitui a maior parte dos cabelos e unhas, conferindo resistência e estrutura.
+                    </div>
                 </div>
-            </div>
-            
-            <div class="question">
-                <h3>4. Como a sociologia se relaciona com o estudo dos cosméticos?</h3>
-                <div class="options">
-                    <label class="incorrect-answer">a) Estuda as reações químicas dos compostos</label>
-                    <label class="correct-answer">b) Analisa os padrões de beleza socialmente construídos</label>
-                    <label class="incorrect-answer">c) Desenvolve novas moléculas para cosméticos</label>
-                    <label class="incorrect-answer">d) Estuda a estrutura da pele e cabelo</label>
+                
+                <div class="question">
+                    <h3>7. Qual impacto social está associado aos cosméticos?</h3>
+                    <div class="options">
+                        <div class="option" onclick="checkAnswer(this, 7, 'a')">a) Redução do consumo de água</div>
+                        <div class="option" onclick="checkAnswer(this, 7, 'b')">b) Fortalecimento de padrões de beleza irreais</div>
+                        <div class="option" onclick="checkAnswer(this, 7, 'c')">c) Diminuição da autoestima geral</div>
+                        <div class="option" onclick="checkAnswer(this, 7, 'd')">d) Eliminação de diferenças culturais</div>
+                    </div>
+                    <div class="feedback correct" id="feedback7">
+                        <strong>Correto!</strong> A indústria de cosméticos frequentemente reforça padrões de beleza específicos e por vezes irreais, que podem impactar negativamente a autoimagem e autoestima das pessoas.
+                    </div>
                 </div>
-                <div class="feedback">
-                    <p><strong>Resposta Correta: b) Analisa os padrões de beleza socialmente construídos</strong></p>
-                    <p>A sociologia estuda como a indústria de cosméticos influencia e é influenciada pelos padrões de beleza socialmente construídos.</p>
-                    <p><strong>Por que não é as outras:</strong></p>
-                    <p>a) O estudo das reações químicas é objeto da química, não da sociologia.</p>
-                    <p>c) O desenvolvimento de novas moléculas é feito por químicos, não sociólogos.</p>
-                    <p>d) O estudo da estrutura da pele e cabelo é realizado pela biologia e dermatologia.</p>
+                
+                <div class="question">
+                    <h3>8. Qual componente de protetores solares absorve radiação UV?</h3>
+                    <div class="options">
+                        <div class="option" onclick="checkAnswer(this, 8, 'a')">a) Dióxido de titânio</div>
+                        <div class="option" onclick="checkAnswer(this, 8, 'b')">b) Óxido de zinco</div>
+                        <div class="option" onclick="checkAnswer(this, 8, 'c')">c) Avobenzona</div>
+                        <div class="option" onclick="checkAnswer(this, 8, 'd')">d) Talco</div>
+                    </div>
+                    <div class="feedback correct" id="feedback8">
+                        <strong>Correto!</strong> A avobenzona é um composto orgânico que absorve radiação ultravioleta, protegendo a pele contra danos solares.
+                    </div>
                 </div>
-            </div>
-            
-            <div class="question">
-                <h3>5. Qual a propriedade mais notável do ácido hialurônico?</h3>
-                <div class="options">
-                    <label class="incorrect-answer">a) Sua capacidade de tingimento</label>
-                    <label class="incorrect-answer">b) Seu poder de limpeza profunda</label>
-                    <label class="correct-answer">c) Sua capacidade de reter água</label>
-                    <label class="incorrect-answer">d) Seu alto poder antioxidante</label>
+                
+                <div class="question">
+                    <h3>9. Qual a fórmula do composto responsável pelo aroma de jasmim em cosméticos?</h3>
+                    <div class="options">
+                        <div class="option" onclick="checkAnswer(this, 9, 'a')">a) C₆H₅COOH</div>
+                        <div class="option" onclick="checkAnswer(this, 9, 'b')">b) HOCH₂CH(OH)CH₂OH</div>
+                        <div class="option" onclick="checkAnswer(this, 9, 'c')">c) CH₃COOCH₂C₆H₅</div>
+                        <div class="option" onclick="checkAnswer(this, 9, 'd')">d) CH₃(CH₂)₁₄COONa</div>
+                    </div>
+                    <div class="feedback correct" id="feedback9">
+                        <strong>Correto!</strong> O acetato de benzila (CH₃COOCH₂C₆H₅) é um éster responsável pelo característico aroma de jasmim em muitos cosméticos.
+                    </div>
                 </div>
-                <div class="feedback">
-                    <p><strong>Resposta Correta: c) Sua capacidade de reter água</strong></p>
-                    <p>O ácido hialurônico é conhecido por sua capacidade de reter até 1000 vezes seu peso em água, proporcionando hidratação intensa à pele.</p>
-                    <p><strong>Por que não é as outras:</strong></p>
-                    <p>a) O ácido hialurônico não tem propriedades de tingimento.</p>
-                    <p>b) Sua função não é limpeza, mas sim hidratação.</p>
-                    <p>d) Embora tenha algum efeito antioxidante, não é esta sua propriedade mais notável.</p>
-                </div>
-            </div>
-            
-            <div class="question">
-                <h3>6. Qual destes NÃO é um impacto ambiental associado aos cosméticos?</h3>
-                <div class="options">
-                    <label class="incorrect-answer">a) Microplásticos em esfoliantes</label>
-                    <label class="incorrect-answer">b) Embalagens não biodegradáveis</label>
-                    <label class="correct-answer">c) Aumento da camada de ozônio</label>
-                    <label class="incorrect-answer">d) Poluição por produtos não biodegradáveis</label>
-                </div>
-                <div class="feedback">
-                    <p><strong>Resposta Correta: c) Aumento da camada de ozônio</strong></p>
-                    <p>Os cosméticos não causam aumento da camada de ozônio. Pelo contrário, alguns compostos voláteis podem contribuir para a degradação do ozônio.</p>
-                    <p><strong>Por que não é as outras:</strong></p>
-                    <p>a) Microplásticos em esfoliantes são sim um problema ambiental conhecido.</p>
-                    <p>b) Embalagens não biodegradáveis contribuem para o acúmulo de resíduos no meio ambiente.</p>
-                    <p>d) Produtos não biodegradáveis podem sim causar poluição ambiental.</p>
-                </div>
-            </div>
-            
-            <div class="question">
-                <h3>7. Por que a dimeticona é amplamente utilizada em produtos capilares?</h3>
-                <div class="options">
-                    <label class="incorrect-answer">a) Por seu baixo custo de produção</label>
-                    <label class="incorrect-answer">b) Por sua capacidade de tingir os fios</label>
-                    <label class="correct-answer">c) Por sua capacidade de preencher fissuras na cutícula capilar</label>
-                    <label class="incorrect-answer">d) Por seu poder de limpeza profunda</label>
-                </div>
-                <div class="feedback">
-                    <p><strong>Resposta Correta: c) Por sua capacidade de preencher fissuras na cutícula capilar</strong></p>
-                    <p>A dimeticona é uma silicona que preenche as fissuras na cutícula capilar, reduzindo o atrito entre os fios e proporcionando brilho e maciez.</p>
-                    <p><strong>Por que não é as outras:</strong></p>
-                    <p>a) Embora tenha custo acessível, não é esta a principal razão de seu uso.</p>
-                    <p>b) A dimeticona não tinge os fios, apenas condiciona.</p>
-                    <p>d) Sua função não é limpeza, mas sim condicionamento.</p>
-                </div>
-            </div>
-            
-            <div class="question">
-                <h3>8. Qual a principal função dos tensoativos em shampoos?</h3>
-                <div class="options">
-                    <label class="incorrect-answer">a) Colorir os fios</label>
-                    <label class="correct-answer">b) Remover sujeira e óleos</label>
-                    <label class="incorrect-answer">c) Conservar o produto</label>
-                    <label class="incorrect-answer">d) Aumentar a viscosidade</label>
-                </div>
-                <div class="feedback">
-                    <p><strong>Resposta Correta: b) Remover sujeira e óleos</strong></p>
-                    <p>Tensoativos são surfactantes que reducem a tensão superficial, permitiendo a remoção de sujeira e óleos durante a lavagem.</p>
-                    <p><strong>Por que não é as outras:</strong></p>
-                    <p>a) A coloração é feita por pigmentos, não por tensoativos.</p>
-                    <p>c) A conservação é função de compostos específicos como os parabenos.</p>
-                    <p>d) O aumento de viscosidade é feito por espessantes, não por tensoativos.</p>
-                </div>
-            </div>
-            
-            <div class="question">
-                <h3>9. Qual destes compostos é um exemplo de silicona utilizada em cosméticos?</h3>
-                <div class="options">
-                    <label class="incorrect-answer">a) Ácido salicílico</label>
-                    <label class="incorrect-answer">b) Glicerina</label>
-                    <label class="correct-answer">c) Ciclometicona</label>
-                    <label class="incorrect-answer">d) Ácido cítrico</label>
-                </div>
-                <div class="feedback">
-                    <p><strong>Resposta Correta: c) Ciclometicona</strong></p>
-                    <p>A ciclometicona é uma silicona volátil muito utilizada em produtos capilares e para a pele para proporcionar toque seco e sedoso.</p>
-                    <p><strong>Por que não é as outras:</strong></p>
-                    <p>a) O ácido salicílico é um esfoliante químico, não uma silicona.</p>
-                    <p>b) A glicerina é um umectante, não uma silicona.</p>
-                    <p>d) O ácido cítrico é usado para ajuste de pH, não é uma silicona.</p>
-                </div>
-            </div>
-            
-            <div class="question">
-                <h3>10. Qual a principal função dos conservantes em cosméticos?</h3>
-                <div class="options">
-                    <label class="incorrect-answer">a) Proporcionar fragrância</label>
-                    <label class="incorrect-answer">b) Dar cor ao produto</label>
-                    <label class="correct-answer">c) Prevenir crescimento microbiano</label>
-                    <label class="incorrect-answer">d) Aumentar a absorção na pele</label>
-                </div>
-                <div class="feedback">
-                    <p><strong>Resposta Correta: c) Prevenir crescimento microbiano</strong></p>
-                    <p>Os conservantes têm como função principal prevenir a contaminação por microorganismos, prolongando a vida útil do produto.</p>
-                    <p><strong>Por que não é as outras:</strong></p>
-                    <p>a) A fragrância é proporcionada por compostos aromáticos específicos.</p>
-                    <p>b) A cor é dada por pigmentos e corantes.</p>
-                    <p>d) A absorção na pele é facilitada por veículos e penetração, não por conservantes.</p>
+                
+                <div class="question">
+                    <h3>10. Qual é um impacto ambiental associado aos cosméticos?</h3>
+                    <div class="options">
+                        <div class="option" onclick="checkAnswer(this, 10, 'a')">a) Aumento da camada de ozônio</div>
+                        <div class="option" onclick="checkAnswer(this, 10, 'b')">b) Redução da poluição sonora</div>
+                        <div class="option" onclick="checkAnswer(this, 10, 'c')">c) Contaminação da água por microplásticos</div>
+                        <div class="option" onclick="checkAnswer(this, 10, 'd')">d) Diminuição do efeito estufa</div>
+                    </div>
+                    <div class="feedback correct" id="feedback10">
+                        <strong>Correto!</strong> Muitos cosméticos, especialmente esfoliantes e pastas de dente, contêm microplásticos que contaminam corpos d'água, afetando ecossistemas aquáticos.
+                    </div>
                 </div>
             </div>
         </section>
-        
-        <footer>
-            <p>Trabalho de Química - Grupo: Richard, Heloísa, Matheus, Otávio, Emanuel e Davi</p>
-            <p class="conclusion">"A química dos cosméticos revela a interseção entre ciência, beleza e bem-estar, demonstrando como a inovação científica pode elevar tanto a saúde da pele quanto a autoestima individual."</p>
-            <p>© 2025 - Todos os direitos reservados</p>
-        </footer>
     </div>
 
+    <footer>
+        <p>Trabalho de Química - 3º Ano D - Setembro 2025</p>
+        <p>Colégio [Nome da Escola]</p>
+    </footer>
+
     <script>
-        // Inicialização quando o documento estiver carregado
+        // Animação de digitação e revelação de seções
         document.addEventListener('DOMContentLoaded', function() {
-            // Adicionar efeito de digitação ao título
-            const title = document.querySelector('.cover-content h1');
-            title.classList.add('typewriter');
+            const sections = document.querySelectorAll('section');
+            
+            function checkScroll() {
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (sectionTop < windowHeight * 0.75) {
+                        section.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Verifica a posição do scroll inicialmente e durante o scroll
+            checkScroll();
+            window.addEventListener('scroll', checkScroll);
+            
+            // Configura o questionário
+            setupQuiz();
         });
+        
+        // Funções para o questionário
+        function setupQuiz() {
+            // Respostas corretas
+            window.correctAnswers = {
+                1: 'a',
+                2: 'b',
+                3: 'b',
+                4: 'b',
+                5: 'c',
+                6: 'b',
+                7: 'b',
+                8: 'c',
+                9: 'c',
+                10: 'c'
+            };
+        }
+        
+        function checkAnswer(element, questionNumber, selectedOption) {
+            const feedback = document.getElementById(`feedback${questionNumber}`);
+            const options = element.parentElement.querySelectorAll('.option');
+            
+            // Remove seleção anterior
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Marca a opção selecionada
+            element.classList.add('selected');
+            
+            // Mostra feedback
+            feedback.style.display = 'block';
+            
+            // Verifica se a resposta está correta
+            if (selectedOption === window.correctAnswers[questionNumber]) {
+                feedback.className = 'feedback correct';
+                feedback.innerHTML = `<strong>Correto!</strong> ${getCorrectExplanation(questionNumber)}`;
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.innerHTML = `<strong>Incorreto.</strong> ${getIncorrectExplanation(questionNumber, selectedOption)}`;
+            }
+        }
+        
+        function getCorrectExplanation(questionNumber) {
+            const explanations = {
+                1: "A glicerina (ou glicerol) é um triálcool, contendo três grupos hidroxila (-OH) em sua estrutura, o que confere suas propriedades umectantes.",
+                2: "O ácido benzoico e seus sais (benzoatos) são amplamente utilizados como conservantes em cosméticos por suas propriedades antimicrobianas.",
+                3: "O ácido benzoico possui a fórmula C₆H₅COOH, consistindo em um anel benzênico ligado a um grupo carboxila (-COOH).",
+                4: "Os ésteres são frequentemente responsáveis pelos aromas em cosméticos, como o acetato de benzila que confere aroma de jasmim.",
+                5: "Tensoativos (ou surfactantes) como o lauril éter sulfato de sódio são responsáveis pela formação de espuma e pela remoção de sujeira e oleosidade.",
+                6: "A queratina é a proteína fibrosa que constitui a maior parte dos cabelos e unhas, conferindo resistência e estrutura.",
+                7: "A indústria de cosméticos frequentemente reforça padrões de beleza específicos e por vezes irreais, que podem impactar negativamente a autoimagem e autoestima das pessoas.",
+                8: "A avobenzona é um composto orgânico que absorve radiação ultravioleta, protegendo a pele contra danos solares.",
+                9: "O acetato de benzila (CH₃COOCH₂C₆H₅) é um éster responsável pelo característico aroma de jasmim em muitos cosméticos.",
+                10: "Muitos cosméticos, especialmente esfoliantes e pastas de dente, contêm microplásticos que contaminam corpos d'água, afetando ecossistemas aquáticos."
+            };
+            
+            return explanations[questionNumber];
+        }
+        
+        function getIncorrectExplanation(questionNumber, selectedOption) {
+            const correctOption = window.correctAnswers[questionNumber];
+            let explanation = `A resposta correta é a alternativa ${correctOption.toUpperCase()}. `;
+            
+            // Explicações adicionais para respostas incorretas
+            const additionalExplanations = {
+                1: {
+                    'b': "Os ésteres são geralmente responsáveis por fragrâncias, não pela função umectante da glicerina.",
+                    'c': "Ácidos carboxílicos são mais comuns como conservantes, não como umectantes.",
+                    'd': "Cetonas não são typically encontradas como componentes principais em hidratantes."
+                },
+                3: {
+                    'a': "CH₃COOCH₂C₆H₅ é a fórmula do acetato de benzila, um éster aromatizante.",
+                    'c': "HOCH₂CH(OH)CH₂OH é a fórmula da glicerina, um umectante.",
+                    'd': "CH₃(CH₂)₁₁OSO₃Na representa o lauril sulfato de sódio, um tensoativo."
+                },
+                9: {
+                    'a': "C₆H₅COOH é a fórmula do ácido benzoico, um conservante.",
+                    'b': "HOCH₂CH(OH)CH₂OH é a fórmula da glicerina, um umectante.",
+                    'd': "CH₃(CH₂)₁₄COONa representa o palmitato de sódio, um sabão."
+                }
+            };
+            
+            if (additionalExplanations[questionNumber] && additionalExplanations[questionNumber][selectedOption]) {
+                explanation += additionalExplanations[questionNumber][selectedOption] + " ";
+            }
+            
+            explanation += getCorrectExplanation(questionNumber);
+            return explanation;
+        }
     </script>
 </body>
 </html>
