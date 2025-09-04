@@ -175,7 +175,6 @@
         
         p {
             margin-bottom: 15px;
-            text-align: justify;
             font-size: 1rem;
         }
         
@@ -570,27 +569,6 @@
             }
         }
         
-        /* Efeito de digitação - REMOVIDO
-        .typewriter {
-            overflow: hidden;
-            border-right: .15em solid var(--primary);
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: .15em;
-            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-        }
-        
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--primary); }
-        }
-        */
-        
         /* Transição de abertura */
         .intro-overlay {
             position: fixed;
@@ -732,6 +710,35 @@
                 opacity: 0;
             }
         }
+
+        #celebrationContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+
+.celebration-particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+  animation: explode 2s forwards ease-out;
+}
+
+@keyframes explode {
+  to {
+    transform: translate(var(--tx), var(--ty)) scale(0.5);
+    opacity: 0;
+  }
+}
+
     </style>
 </head>
 <body>
@@ -1006,192 +1013,178 @@
         </section>
 
         <!-- Questionário -->
-        <section id="quiz" class="quiz">
-            <h2>Questionário</h2>
-            <p>Teste seus conhecimentos sobre a química dos cosméticos. Marque a alternativa correta e veja o feedback imediato:</p>
-            
-            <!-- Questão 1 - Resposta: A -->
-            <div class="question">
-                <h3>1. Qual a principal função dos ácidos graxos em cosméticos?</h3>
-                <div class="options">
-                    <label><input type="radio" name="q1" value="a"> a) Formar barreira protetora na pele</label>
-                    <label><input type="radio" name="q1" value="b"> b) Promover limpeza profunda</label>
-                    <label><input type="radio" name="q1" value="c"> c) Fornecer cor aos produtos</label>
-                    <label><input type="radio" name="q1" value="d"> d) Conservar o produto</label>
-                </div>
-                <div id="feedback-q1" class="feedback"></div>
-            </div>
-            
-            <!-- Questão 2 - Resposta: A -->
-            <div class="question">
-                <h3>2. Qual destes compostos é responsável por absorver radiação UV em protetores solares?</h3>
-                <div class="options">
-                    <label><input type="radio" name="q2" value="a"> a) Ácido esteárico</label>
-                    <label><input type="radio" name="q2" value="b"> b) Dimeticona</label>
-                    <label><input type="radio" name="q2" value="c"> c) Avobenzona</label>
-                    <label><input type="radio" name="q2" value="d"> d) Metilparabeno</label>
-                </div>
-                <div id="feedback-q2" class="feedback"></div>
-            </div>
-            
-            <!-- Questão 3 - Resposta: C -->
-            <div class="question">
-                <h3>3. Qual a principal controvérsia associada aos parabenos?</h3>
-                <div class="options">
-                    <label><input type="radio" name="q3" value="a"> a) Seu alto custo de produção</label>
-                    <label><input type="radio" name="q3" value="b"> b) Sua ineficiência como conservantes</label>
-                    <label><input type="radio" name="q3" value="c"> c) Sua possível atividade estrogênica no organismo</label>
-                    <label><input type="radio" name="q3" value="d"> d) Sua capacidade de causar mudança de cor nos produtos</label>
-                </div>
-                <div id="feedback-q3" class="feedback"></div>
-            </div>
-            
-            <!-- Questão 4 - Resposta: B -->
-            <div class="question">
-                <h3>4. Como a sociologia se relaciona com o estudo dos cosméticos?</h3>
-                <div class="options">
-                    <label><input type="radio" name="q4" value="a"> a) Estuda as reações químicas dos compostos</label>
-                    <label><input type="radio" name="q4" value="b"> b) Analisa os padrões de beleza socialmente construídos</label>
-                    <label><input type="radio" name="q4" value="c"> c) Desenvolve novas moléculas para cosméticos</label>
-                    <label><input type="radio" name="q4" value="d"> d) Estuda a estrutura da pele e cabelo</label>
-                </div>
-                <div id="feedback-q4" class="feedback"></div>
-            </div>
-            
-            <!-- Questão 5 - Resposta: C -->
-            <div class="question">
-                <h3>5. Qual a propriedade mais notável do ácido hialurônico?</h3>
-                <div class="options">
-                    <label><input type="radio" name="q5" value="a"> a) Sua capacidade de tingimento</label>
-                    <label><input type="radio" name="q5" value="b"> b) Seu poder de limpeza profunda</label>
-                    <label><input type="radio" name="q5" value="c"> c) Sua capacidade de reter água</label>
-                    <label><input type="radio" name="q5" value="d"> d) Seu alto poder antioxidante</label>
-                </div>
-                <div id="feedback-q5" class="feedback"></div>
-            </div>
-            
-            <!-- Questão 6 - Resposta: D -->
-            <div class="question">
-                <h3>6. Qual destes NÃO é um impacto ambiental associado aos cosméticos?</h3>
-                <div class="options">
-                    <label><input type="radio" name="q6" value="a"> a) Microplásticos em esfoliantes</label>
-                    <label><input type="radio" name="q6" value="b"> b) Embalagens não biodegradáveis</label>
-                    <label><input type="radio" name="q6" value="c"> c) Aumento da camada de ozônio</label>
-                    <label><input type="radio" name="q6" value="d"> d) Poluição por produtos não biodegradáveis</label>
-                </div>
-                <div id="feedback-q6" class="feedback"></div>
-            </div>
-            
-            <!-- Questão 7 - Resposta: D -->
-            <div class="question">
-                <h3>7. Por que a dimeticona é amplamente utilizada em produtos capilares?</h3>
-                <div class="options">
-                    <label><input type="radio" name="q7" value="a"> a) Por seu baixo custo de produção</label>
-                    <label><input type="radio" name="q7" value="b"> b) Por sua capacidade de tingir os fios</label>
-                    <label><input type="radio" name="q7" value="c"> c) Por sua capacidade de preencher fissuras na cutícula capilar</label>
-                    <label><input type="radio" name="q7" value="d"> d) Por seu poder de limpeza profunda</label>
-                </div>
-                <div id="feedback-q7" class="feedback"></div>
-            </div>
-            
-            <!-- Questão 8 - Resposta: A -->
-            <div class="question">
-                <h3>8. Qual a principal função dos tensoativos em shampoos?</h3>
-                <div class="options">
-                    <label><input type="radio" name="q8" value="a"> a) Colorir os fios</label>
-                    <label><input type="radio" name="q8" value="b"> b) Remover sujeira e óleos</label>
-                    <label><input type="radio" name="q8" value="c"> c) Conservar o produto</label>
-                    <label><input type="radio" name="q8" value="d"> d) Aumentar a viscosidade</label>
-                </div>
-                <div id="feedback-q8" class="feedback"></div>
-            </div>
-            
-            <!-- Questão 9 - Resposta: B -->
-            <div class="question">
-                <h3>9. Qual destes compostos é um exemplo de silicona utilizada em cosméticos?</h3>
-                <div class="options">
-                    <label><input type="radio" name="q9" value="a"> a) Ácido salicílico</label>
-                    <label><input type="radio" name="q9" value="b"> b) Glicerina</label>
-                    <label><input type="radio" name="q9" value="c"> c) Ciclometicona</label>
-                    <label><input type="radio" name="q9" value="d"> d) Ácido cítrico</label>
-                </div>
-                <div id="feedback-q9" class="feedback"></div>
-            </div>
-            
-            <!-- Questão 10 - Resposta: D -->
-            <div class="question">
-                <h3>10. Qual a principal função dos conservantes em cosméticos?</h3>
-                <div class="options">
-                    <label><input type="radio" name="q10" value="a"> a) Proporcionar fragrância</label>
-                    <label><input type="radio" name="q10" value="b"> b) Dar cor ao produto</label>
-                    <label><input type="radio" name="q10" value="c"> c) Prevenir crescimento microbiano</label>
-                    <label><input type="radio" name="q10" value="d"> d) Aumentar a absorção na pele</label>
-                </div>
-                <div id="feedback-q10" class="feedback"></div>
-            </div>
-            
-            <!-- Questão 11 - Resposta: C -->
-            <div class="question">
-                <h3>11. Qual característica estrutural do ácido esteárico permite sua função como emulsionante?</h3>
-                <div class="options">
-                    <label><input type="radio" name="q11" value="a"> a) Presença de grupo carboxila polar e cadeia apolar longa</label>
-                    <label><input type="radio" name="q11" value="b"> b) Anel benzênico em sua estrutura</label>
-                    <label><input type="radio" name="q11" value="c"> c) Múltiplas ligações duplas conjugadas</label>
-                    <label><input type="radio" name="q11" value="d"> d) Grupos hidroxila livres</label>
-                </div>
-                <div id="feedback-q11" class="feedback"></div>
-            </div>
-            
-            <!-- Questão 12 - Resposta: C -->
-            <div class="question">
-                <h3>12. Qual propriedade das siliconas as torna ideais para produtos capilares?</h3>
-                <div class="options">
-                    <label><input type="radio" name="q12" value="a"> a) Alta volatilidade e baixo ponto de ebulição</label>
-                    <label><input type="radio" name="q12" value="b"> b) Baixa tensão superficial e alta flexibilidade molecular</label>
-                    <label><input type="radio" name="q12" value="c"> c) Forte coloração e poder tingente</label>
-                    <label><input type="radio" name="q12" value="d"> d) Alta reatividade química com a queratina</label>
-                </div>
-                <div id="feedback-q12" class="feedback"></div>
-            </div>
-            
-            <!-- Questão 13 - Resposta: A -->
-            <div class="question">
-                <h3>13. Como a estrutura química do ácido hialurônico explica sua capacidade de reter água?</h3>
-                <div class="options">
-                    <label><input type="radio" name="q13" value="a"> a) Presença de múltiplos grupos hidroxila que formam pontes de hidrogênio</label>
-                    <label><input type="radio" name="q13" value="b"> b) Cadeias hidrocarbonadas longas e apolares</label>
-                    <label><input type="radio" name="q13" value="c"> c) Anéis aromáticos que absorvem água</label>
-                    <label><input type="radio" name="q13" value="d"> d) Grupos amino protonados em pH fisiológico</label>
-                </div>
-                <div id="feedback-q13" class="feedback"></div>
-            </div>
+<section id="quiz" class="quiz">
+    <h2>Questionário</h2>
+    <p>Teste seus conhecimentos sobre a química dos cosméticos. Marque a alternativa correta e veja o feedback imediato:</p>
+    
+    <div class="question">
+        <h3>1. Qual a principal função dos ácidos graxos em cosméticos?</h3>
+        <div class="options">
+            <label><input type="radio" name="q1" value="a"> a) Formar barreira protetora na pele</label>
+            <label><input type="radio" name="q1" value="b"> b) Promover limpeza profunda</label>
+            <label><input type="radio" name="q1" value="c"> c) Fornecer cor aos produtos</label>
+            <label><input type="radio" name="q1" value="d"> d) Conservar o produto</label>
+        </div>
+        <div id="feedback-q1" class="feedback"></div>
+    </div>
 
-            <!-- Questão 14 - Resposta: D -->
-            <div class="question">
-                <h3>14. Qual composto é representado pela fórmula molecular C₂₈H₄₄N₂O₂₃?</h3>
-                <div class="options">
-                    <label><input type="radio" name="q14" value="a"> a) Ácido esteárico</label>
-                    <label><input type="radio" name="q14" value="b"> b) Ácido hialurônico</label>
-                    <label><input type="radio" name="q14" value="c"> c) Dimeticona</label>
-                    <label><input type="radio" name="q14" value="d"> d) Metilparabeno</label>
-                </div>
-                <div id="feedback-q14" class="feedback"></div>
-            </div>
+    <div class="question">
+        <h3>2. Qual destes compostos é responsável por absorver radiação UV em protetores solares?</h3>
+        <div class="options">
+            <label><input type="radio" name="q2" value="a"> a) Ácido esteárico</label>
+            <label><input type="radio" name="q2" value="b"> b) Dimeticona</label>
+            <label><input type="radio" name="q2" value="c"> c) Avobenzona</label>
+            <label><input type="radio" name="q2" value="d"> d) Metilparabeno</label>
+        </div>
+        <div id="feedback-q2" class="feedback"></div>
+    </div>
 
-            <!-- Questão 15 - Resposta: D -->
-            <div class="question">
-                <h3>15. Qual é a fórmula molecular da dimeticona?</h3>
-                <div class="options">
-                    <label><input type="radio" name="q15" value="a"> a) C₁₈H₃₆O₂</label>
-                    <label><input type="radio" name="q15" value="b"> b) C₈H₈O₃</label>
-                    <label><input type="radio" name="q15" value="c"> c) C₆H₁₈OSi₂</label>
-                    <label><input type="radio" name="q15" value="d"> d) C₂₈H₄₄N₂O₂₃</label>
-                </div>
-                <div id="feedback-q15" class="feedback"></div>
-            </div>
+    <div class="question">
+        <h3>3. Qual a principal controvérsia associada aos parabenos?</h3>
+        <div class="options">
+            <label><input type="radio" name="q3" value="a"> a) Seu alto custo de produção</label>
+            <label><input type="radio" name="q3" value="b"> b) Sua ineficiência como conservantes</label>
+            <label><input type="radio" name="q3" value="c"> c) Sua possível atividade estrogênica no organismo</label>
+            <label><input type="radio" name="q3" value="d"> d) Sua capacidade de causar mudança de cor nos produtos</label>
+        </div>
+        <div id="feedback-q3" class="feedback"></div>
+    </div>
 
-            <button class="submit" onclick="showCelebration()">Finalizado</button>
-        </section>
+    <div class="question">
+        <h3>4. Como a sociologia se relaciona com o estudo dos cosméticos?</h3>
+        <div class="options">
+            <label><input type="radio" name="q4" value="a"> a) Estuda as reações químicas dos compostos</label>
+            <label><input type="radio" name="q4" value="b"> b) Analisa os padrões de beleza socialmente construídos</label>
+            <label><input type="radio" name="q4" value="c"> c) Desenvolve novas moléculas para cosméticos</label>
+            <label><input type="radio" name="q4" value="d"> d) Estuda a estrutura da pele e cabelo</label>
+        </div>
+        <div id="feedback-q4" class="feedback"></div>
+    </div>
+
+    <div class="question">
+        <h3>5. Qual a propriedade mais notável do ácido hialurônico?</h3>
+        <div class="options">
+            <label><input type="radio" name="q5" value="a"> a) Sua capacidade de tingimento</label>
+            <label><input type="radio" name="q5" value="b"> b) Seu poder de limpeza profunda</label>
+            <label><input type="radio" name="q5" value="c"> c) Sua capacidade de reter água</label>
+            <label><input type="radio" name="q5" value="d"> d) Seu alto poder antioxidante</label>
+        </div>
+        <div id="feedback-q5" class="feedback"></div>
+    </div>
+
+    <div class="question">
+        <h3>6. Qual destes NÃO é um impacto ambiental associado aos cosméticos?</h3>
+        <div class="options">
+            <label><input type="radio" name="q6" value="a"> a) Microplásticos em esfoliantes</label>
+            <label><input type="radio" name="q6" value="b"> b) Embalagens não biodegradáveis</label>
+            <label><input type="radio" name="q6" value="c"> c) Aumento da camada de ozônio</label>
+            <label><input type="radio" name="q6" value="d"> d) Poluição por produtos não biodegradáveis</label>
+        </div>
+        <div id="feedback-q6" class="feedback"></div>
+    </div>
+
+<div class="question">
+    <h3>7. A dimeticona é um polímero de siloxano. Qual é a representação correta simplificada?</h3>
+    <div class="options">
+        <label><input type="radio" name="q7" value="a"> a) CH₃-[Si(CH₃)₂-O]ₙ-Si(CH₃)₃</label>
+        <label><input type="radio" name="q7" value="b"> b) CH₃-(CH₂)₁₆-COOH</label>
+        <label><input type="radio" name="q7" value="c"> c) HO-C(O)-O-CH₃</label>
+        <label><input type="radio" name="q7" value="d"> d) C₂₈H₄₄N₂O₂₃</label>
+    </div>
+    <div id="feedback-q7" class="feedback"></div>
+</div>
+
+
+    <div class="question">
+        <h3>8. Qual a principal função dos tensoativos em shampoos?</h3>
+        <div class="options">
+            <label><input type="radio" name="q8" value="a"> a) Remover sujeira e óleos</label>
+            <label><input type="radio" name="q8" value="b"> b) Colorir os fios</label>
+            <label><input type="radio" name="q8" value="c"> c) Conservar o produto</label>
+            <label><input type="radio" name="q8" value="d"> d) Aumentar a viscosidade</label>
+        </div>
+        <div id="feedback-q8" class="feedback"></div>
+    </div>
+
+    <div class="question">
+        <h3>9. Qual destes compostos é um exemplo de silicona utilizada em cosméticos?</h3>
+        <div class="options">
+            <label><input type="radio" name="q9" value="a"> a) Ácido salicílico</label>
+            <label><input type="radio" name="q9" value="b"> b) Ciclometicona</label>
+            <label><input type="radio" name="q9" value="c"> c) Glicerina</label>
+            <label><input type="radio" name="q9" value="d"> d) Ácido cítrico</label>
+        </div>
+        <div id="feedback-q9" class="feedback"></div>
+    </div>
+
+    <div class="question">
+        <h3>10. Qual a principal função dos conservantes em cosméticos?</h3>
+        <div class="options">
+            <label><input type="radio" name="q10" value="a"> a) Proporcionar fragrância</label>
+            <label><input type="radio" name="q10" value="b"> b) Dar cor ao produto</label>
+            <label><input type="radio" name="q10" value="c"> c) Prevenir crescimento microbiano</label>
+            <label><input type="radio" name="q10" value="d"> d) Aumentar a absorção na pele</label>
+        </div>
+        <div id="feedback-q10" class="feedback"></div>
+    </div>
+
+    <div class="question">
+        <h3>11. Qual característica estrutural do ácido esteárico permite sua função como emulsionante?</h3>
+        <div class="options">
+            <label><input type="radio" name="q11" value="a"> a) Presença de grupo carboxila polar e cadeia apolar longa</label>
+            <label><input type="radio" name="q11" value="b"> b) Anel benzênico em sua estrutura</label>
+            <label><input type="radio" name="q11" value="c"> c) Múltiplas ligações duplas conjugadas</label>
+            <label><input type="radio" name="q11" value="d"> d) Grupos hidroxila livres</label>
+        </div>
+        <div id="feedback-q11" class="feedback"></div>
+    </div>
+
+    <div class="question">
+        <h3>12. Qual propriedade das siliconas as torna ideais para produtos capilares?</h3>
+        <div class="options">
+            <label><input type="radio" name="q12" value="a"> a) Alta volatilidade e baixo ponto de ebulição</label>
+            <label><input type="radio" name="q12" value="b"> b) Baixa tensão superficial e alta flexibilidade molecular</label>
+            <label><input type="radio" name="q12" value="c"> c) Forte coloração e poder tingente</label>
+            <label><input type="radio" name="q12" value="d"> d) Alta reatividade química com a queratina</label>
+        </div>
+        <div id="feedback-q12" class="feedback"></div>
+    </div>
+
+    <div class="question">
+        <h3>13. Como a estrutura química do ácido hialurônico explica sua capacidade de reter água?</h3>
+        <div class="options">
+            <label><input type="radio" name="q13" value="a"> a) Presença de múltiplos grupos hidroxila que formam pontes de hidrogênio</label>
+            <label><input type="radio" name="q13" value="b"> b) Cadeias hidrocarbonadas longas e apolares</label>
+            <label><input type="radio" name="q13" value="c"> c) Anéis aromáticos que absorvem água</label>
+            <label><input type="radio" name="q13" value="d"> d) Grupos amino protonados em pH fisiológico</label>
+        </div>
+        <div id="feedback-q13" class="feedback"></div>
+    </div>
+
+    <div class="question">
+        <h3>14. Qual composto é representado pela fórmula molecular C₂₈H₄₄N₂O₂₃?</h3>
+        <div class="options">
+            <label><input type="radio" name="q14" value="a"> a) Ácido esteárico</label>
+            <label><input type="radio" name="q14" value="b"> b) Ácido hialurônico</label>
+            <label><input type="radio" name="q14" value="c"> c) Dimeticona</label>
+            <label><input type="radio" name="q14" value="d"> d) Metilparabeno</label>
+        </div>
+        <div id="feedback-q14" class="feedback"></div>
+    </div>
+
+    <div class="question">
+        <h3>15. Qual é a fórmula molecular da dimeticona?</h3>
+        <div class="options">
+            <label><input type="radio" name="q15" value="a"> a) C₁₈H₃₆O₂</label>
+            <label><input type="radio" name="q15" value="b"> b) C₈H₈O₃</label>
+            <label><input type="radio" name="q15" value="c"> c) C₆H₁₈OSi₂</label>
+            <label><input type="radio" name="q15" value="d"> d) C₂₈H₄₄N₂O₂₃</label>
+        </div>
+        <div id="feedback-q15" class="feedback"></div>
+    </div>
+
+    <button class="submit" onclick="showCelebration()">Finalizado</button>
+</section>
         
         <footer>
             <p>Trabalho de Química - Grupo: Richard Aghamenon, Heloísa, Matheus, Otávio, Emanuel e Davi D'avila</p>
@@ -1216,162 +1209,163 @@
     </div>
 
     <script>
-        const correctAnswers = {
-            q1: "a",  // A
-            q2: "a",  // A
-            q3: "c",  // C
-            q4: "b",  // B
-            q5: "c",  // C
-            q6: "d",  // D
-            q7: "d",  // D
-            q8: "a",  // A
-            q9: "b",  // B
-            q10: "d", // D
-            q11: "c", // C
-            q12: "c", // C
-            q13: "a", // A
-            q14: "d", // D
-            q15: "d"  // D
-        };
-        
-        // Justificativas para cada questão
-        const explanations = {
-            q1: {
-                correct: "a) Formar barreira protetora na pele",
-                explanation: "CORRETO: Os ácidos graxos possuem uma cadeia hidrocarbonada longa e apolar combinada com um grupo carboxílico polar. Essa estrutura anfifílica permite que eles formam uma barreira oclusiva na pele, prevenindo a perda de água transepidérmica e mantendo a hidratação cutânea.",
-                incorrect: {
-                    b: "A limpeza profunda é função dos tensoativos (como sulfatos), não dos ácidos graxos, que são principalmente emulsionantes e emolientes.",
-                    c: "A cor é fornecida por pigmentos e corantes específicos, não por ácidos graxos que geralmente são incolores.",
-                    d: "A conservação é feita por compostos como parabenos ou fenoxietanol, não por ácidos graxos que podem inclusive servir como nutrientes para microorganismos."
-                }
-            },
-            q2: {
-                correct: "a) Ácido esteárico",
-                explanation: "CORRETO: O ácido esteárico possui propriedades que permitem absorver certos tipos de radiação UV, embora não seja tão eficiente quanto filtros solares especializados. Ele oferece uma proteção solar básica em alguns cosméticos.",
-                incorrect: {
-                    b: "A dimeticona é uma silicona usada para condicionar, não possui propriedades de absorção de UV.",
-                    c: "A avobenzona é um filtro solar eficiente, mas não é a única opção entre esses compostos.",
-                    d: "O metilparabeno é a conservante, não possui propriedades de absorção de UV."
-                }
-            },
-            q3: {
-                correct: "c) Sua possível atividade estrogênica no organismo",
-                explanation: "CORRETO: Estudos controversos sugerem que parabenos podem mimetizar fracamente a ação do estrogênio ao se ligar a receptores estrogênicos. No entanto, órgãos reguladores consideram seguro em baixas concentrações (até 0,4% para parabenos individuais e 0,8% para misturas), pois são rapidamente metabolizados e excretados.",
-                incorrect: {
-                    a: "O custo de produção dos parabenos é baixo, não sendo esta a controvérsia principal. Na verdade, seu baixo custo é uma vantagem industrial.",
-                    b: "A ineficiência como conservantes não é uma característica dos parabenos, que são amplamente utilizados justamente por sua eficácia antimicrobiana.",
-                    d: "Parabenos não causam mudança de cor nos produtos, esta não é uma característica associada a eles. Sua estabilidade é uma de suas vantagens."
-                }
-            },
-            q4: {
-                correct: "b) Analisa os padrões de beleza socialmente construídos",
-                explanation: "CORRETO: A sociologia estuda como a indústria de cosméticos influencia e é influenciada pelos padrões de beleza socialmente construídos. Analisa como esses padrões variam entre culturas, classes sociais e épocas históricas, e como os cosméticos são utilizados como ferramentas de expressão identitária e manutenção de normas sociais.",
-                incorrect: {
-                    a: "O estudo das reações químicas é objeto da química, não da sociologia. A sociologia foca nas interações humanas e construções sociais.",
-                    c: "O desenvolvimento de novas moléculas é feito por químicos e pesquisadores em laboratórios, não sociólogos.",
-                    d: "O estudo da estrutura da pele e cabelo é realizado pela biologia, dermatologia e tricologia, não pela sociologia."
-                }
-            },
-            q5: {
-                correct: "c) Sua capacidade de reter água",
-                explanation: "CORRETO: O ácido hialurônico é um polissacarídeo composto por unidades repetitivas de ácido D-glicurônico e N-acetilglicosamina. Sua estrutura molecular contém múltiplos grupos hidroxila (-OH) e grupos carboxila (-COOH) que podem formar extensas redes de pontes de hidrogênio com moléculas de água, criando uma matriz hidratada tridimensional.",
-                incorrect: {
-                    a: "O ácido hialurônico não tem propriedades de tingimento. É um polímero incolor e transparente en solução.",
-                    b: "Sua função não é limpeza, mas sim hidratação. Não possui propriedades surfactantes ou detergentes.",
-                    d: "Embora tenha algum efeito antioxidante indireto ao proteger as células, não é esta sua propriedade mais notável. Sua principal característica é a capacidade hidratante."
-                }
-            },
-            q6: {
-                correct: "d) Poluição por produtos não biodegradáveis",
-                explanation: "CORRETO: A poluição por produtos não biodegradáveis é um impacto ambiental significativo, mas não está diretamente associado apenas aos cosméticos, sendo um problema mais amplo de diversos setores industriais.",
-                incorrect: {
-                    a: "Microplásticos em esfoliantes são sim um problema ambiental conhecido, pois persistem no ambiente e podem entrar na cadeia alimentar aquática.",
-                    b: "Embalagens não biodegradáveis contribuem para o acúmulo de resíduos no meio ambiente, especialmente plásticos que persistem por centenas de anos.",
-                    c: "Os cosméticos não causam aumento da camada de ozônio. Pelo contrário, alguns compostos voláteis historicamente contribuíram para a degradação do ozônio estratosférico."
-                }
-            },
-            q7: {
-                correct: "d) Por seu poder de limpeza profunda",
-                explanation: "CORRETO: A dimeticona possui propriedades surfactantes que ajudam na limpeza profunda do couro cabeludo, removendo resíduos de produtos e impurezas acumuladas, além de suas propriedades condicionantes.",
-                incorrect: {
-                    a: "Embora tenha custo acessível, não é esta a principal razão de seu uso. Existem alternativas mais baratas que não oferecem o mesmo desempenho.",
-                    b: "A dimeticona não tinge os fios, apenas condiciona. Pigmentos específicos são usados para tingimento capilar.",
-                    c: "O preenchimento de fissuras é uma função importante, mas não a única razão de seu uso amplo."
-                }
-            },
-            q8: {
-                correct: "a) Colorir os fios",
-                explanation: "CORRETO: Alguns tensoativos especiais possuem propriedades que permitem aderir temporariamente aos fios, conferindo leve coloração em shampoos tonalizantes e produtos de coloração temporária.",
-                incorrect: {
-                    b: "A remoção de sujeira é a função principal da maioria dos tensoativos, mas não de todos.",
-                    c: "A conservação é função de compostos específicos como os parabenos, fenoxietanol ou alternativas naturais como óleos essenciais.",
-                    d: "O aumento de viscosidade é feito por espessantes como gomas, polímeros acrílicos ou celulósicos, não por tensoativos."
-                }
-            },
-            q9: {
-                correct: "b) Glicerina",
-                explanation: "CORRETO: A glicerina, embora não seja uma silicona tradicional, é frequentemente agrupada com siliconas em cosméticos por suas propriedades similares de condicionamento e melhoria da textura dos produtos.",
-                incorrect: {
-                    a: "O ácido salicílico é um esfoliante químico beta-hidroxiácido, não uma silicona. É usado para tratamento de acne e esfoliação.",
-                    c: "A ciclometicona é uma silicona volátil muito utilizada em produtos capilares e para a pele.",
-                    d: "O ácido cítrico é usado para ajuste de pH e como quelante, não é uma silicona."
-                }
-            },
-            q10: {
-                correct: "d) Aumentar a absorção na pele",
-                explanation: "CORRETO: Alguns conservantes modernos possuem propriedades que melhoram a penetração de ativos na pele, funcionando como veículos para outros componentes ativos dos cosméticos.",
-                incorrect: {
-                    a: "A fragrância é proporcionada por compostos aromáticos específicos (óleos essenciais, aromas sintéticos), não por conservantes.",
-                    b: "A cor é dada por pigmentos e corantes específicos, não por conservantes que geralmente são incolores.",
-                    c: "Prevenir crescimento microbiano é a função primária dos conservantes, mas não a única."
-                }
-            },
-            q11: {
-                correct: "c) Múltiplas ligações duplas conjugadas",
-                explanation: "CORRETO: As ligações duplas conjugadas no ácido esteárico permitem maior reatividade e capacidade de formar estruturas micelares complexas que melhoram suas propriedades emulsionantes.",
-                incorrect: {
-                    a: "A presença de grupo carboxila polar e cadeia apolar é importante, mas não a característica principal para emulsão.",
-                    b: "O ácido esteárico não possui anel benzênico em sua estrutura. É um ácido graxo saturado de cadeia linear sem aromaticidade.",
-                    d: "O ácido esteárico não possui grupos hidroxila livres. Possui apenas um grupo carboxila terminal como grupo funcional polar."
-                }
-            },
-            q12: {
-                correct: "c) Forte coloração e poder tingente",
-                explanation: "CORRETO: Algumas siliconas modificadas possuem propriedades de tingimento temporário, sendo utilizadas em produtos capilares coloridos que não danificam os fios.",
-                incorrect: {
-                    a: "A volatilidade não é uma propriedade desejada em siliconas para produtos capilares.",
-                    b: "A baixa tensão superficial é importante, mas não a única propriedade relevante.",
-                    d: "A baixa reatividade química é uma vantagem das siliconas, não uma desvantagem."
-                }
-            },
-            q13: {
-                correct: "a) Presença de múltiplos grupos hidroxila que formam pontes de hidrogênio",
-                explanation: "CORRETO: O ácido hialurônico é um glicosaminoglicano composto por unidades repetidas de ácido D-glicurônico e N-acetilglicosamina. Cada unidade dissacarídica possui múltiplos grupos hidroxila (-OH) e grupos carboxila (-COOH) que podem formar extensas redes de pontes de hidrogênio com moléculas de água, criando uma matriz hidratada tridimensional.",
-                incorrect: {
-                    b: "O ácido hialurônico não possui cadeias hidrocarbonadas longas e apolares. É um polissacarídeo altamente polar e hidrofílico.",
-                    c: "Não possui anéis aromáticos em sua estrutura. Sua arquitetura molecular é baseada em anéis de açúcar (piranose) não aromáticos.",
-                    d: "Os grupos amino do ácido hialurônico estão acetilados (N-acetilglicosamina), portanto não estão protonados em pH fisiológico. A capacidade de reter água deve-se principalmente aos grupos hidroxila e carboxila."
-                }
-            },
-            q14: {
-                correct: "d) Metilparabeno",
-                explanation: "CORRETO: A fórmula molecular C₈H₈O₃ corresponde ao metilparabeno, um conservante amplamente utilizado em cosméticos. A fórmula C₂₈H₄₄N₂O₂₃ foi um distrator nesta questão.",
-                incorrect: {
-                    a: "O ácido esteárico tem fórmula molecular C₁₈H₃₆O₂, muito mais simples.",
-                    b: "O ácido hialurônico tem fórmula complexa variável devido ao seu peso molecular elevado.",
-                    c: "A dimeticona tem fórmula molecular (C₂H₆OSi)ₙ, variando com o grau de polimerização."
-                }
-            },
-            q15: {
-                correct: "d) C₂₈H₄₄N₂O₂₃",
-                explanation: "CORRETO: A fórmula C₂₈H₄₄N₂O₂₃ corresponde a uma unidade representativa do ácido hialurônico, que é um polímero de peso molecular variável. As outras opções são fórmulas de outros compostos.",
-                incorrect: {
-                    a: "C₁₈H₃₆O₂ é a fórmula do ácido esteárico, um ácido graxo saturado.",
-                    b: "C₈H₈O₃ é a fórmula do metilparabeno, um conservante.",
-                    c: "C₆H₁₈OSi₂ é uma representação simplificada de algumas siliconas."
-                }
-            }
-        };
+const correctAnswers = {
+    q1: "a",  // Formar barreira protetora na pele
+    q2: "c",  // Avobenzona
+    q3: "c",  // Possível atividade estrogênica
+    q4: "b",  // Analisa padrões de beleza socialmente construídos
+    q5: "c",  // Capacidade de reter água
+    q6: "c",  // Aumento da camada de ozônio (não é impacto de cosméticos)
+    q7: "a",  // CH₃-[Si(CH₃)₂-O]ₙ-Si(CH₃)₃
+    q8: "a",  // Remover sujeira e óleos
+    q9: "b",  // Ciclometicona
+    q10: "c", // Prevenir crescimento microbiano
+    q11: "a", // Grupo carboxila polar + cadeia apolar longa
+    q12: "b", // Baixa tensão superficial + alta flexibilidade molecular
+    q13: "a", // Múltiplos grupos hidroxila que formam pontes de hidrogênio
+    q14: "b", // Ácido hialurônico
+    q15: "c"  // Dimeticona (C₆H₁₈OSi₂)
+};
+
+
+// Justificativas para cada questão
+const explanations = {
+    q1: {
+        correct: "a) Formar barreira protetora na pele",
+        explanation: "CORRETO: Os ácidos graxos formam uma barreira oclusiva que mantém a hidratação da pele.",
+        incorrect: {
+            b: "INCORRETO: A limpeza profunda é função dos tensoativos, não dos ácidos graxos.",
+            c: "INCORRETO: A cor nos cosméticos é fornecida por pigmentos ou corantes, não por ácidos graxos.",
+            d: "INCORRETO: A conservação do produto é feita por conservantes químicos, não pelos ácidos graxos."
+        }
+    },
+    q2: {
+        correct: "c) Avobenzona",
+        explanation: "CORRETO: A avobenzona é um filtro químico que absorve radiação UVA, protegendo a pele.",
+        incorrect: {
+            a: "INCORRETO: Ácido esteárico é um emoliente, não absorve UV.",
+            b: "INCORRETO: Dimeticona é um silicone que condiciona a pele e cabelo, não filtra UV.",
+            d: "INCORRETO: Metilparabeno é um conservante, não protege contra UV."
+        }
+    },
+    q3: {
+        correct: "c) Sua possível atividade estrogênica no organismo",
+        explanation: "CORRETO: A principal controvérsia dos parabenos é que eles podem mimetizar estrogênio e potencialmente afetar o equilíbrio hormonal.",
+        incorrect: {
+            a: "INCORRETO: O custo de produção dos parabenos não é o problema central.",
+            b: "INCORRETO: Parabenos são conservantes eficazes; a controvérsia não é ineficiência.",
+            d: "INCORRETO: Eles não alteram a cor dos produtos; essa não é a preocupação."
+        }
+    },
+    q4: {
+        correct: "b) Analisa os padrões de beleza socialmente construídos",
+        explanation: "CORRETO: A sociologia estuda como padrões de beleza são construídos socialmente e influenciam o consumo de cosméticos.",
+        incorrect: {
+            a: "INCORRETO: Reações químicas são estudadas pela química, não sociologia.",
+            c: "INCORRETO: Desenvolvimento de moléculas é papel da química ou farmacologia.",
+            d: "INCORRETO: Estrutura da pele e cabelo é estudada em biologia ou dermatologia."
+        }
+    },
+    q5: {
+        correct: "c) Sua capacidade de reter água",
+        explanation: "CORRETO: O ácido hialurônico é altamente hidrofílico e consegue reter grande quantidade de água, promovendo hidratação.",
+        incorrect: {
+            a: "INCORRETO: Ele não serve para tingimento de produtos.",
+            b: "INCORRETO: Não é usado para limpeza profunda.",
+            d: "INCORRETO: Possui baixo poder antioxidante comparado a outros ativos."
+        }
+    },
+    q6: {
+        correct: "c) Aumento da camada de ozônio",
+        explanation: "CORRETO: Cosméticos não têm efeito direto na camada de ozônio; os outros listados são impactos ambientais reais.",
+        incorrect: {
+            a: "INCORRETO: Microplásticos de esfoliantes são um problema ambiental.",
+            b: "INCORRETO: Embalagens não biodegradáveis contribuem para poluição.",
+            d: "INCORRETO: Produtos não biodegradáveis causam poluição nos ecossistemas."
+        }
+    },
+    q7: {
+        correct: "a) CH₃-[Si(CH₃)₂-O]ₙ-Si(CH₃)₃",
+        explanation: "CORRETO: Dimeticona é um polímero de siloxano, cuja estrutura repetitiva [Si(CH₃)₂-O]ₙ forma longas cadeias lineares. Essa representação simplificada mostra a sequência repetitiva típica das siliconas utilizadas em cosméticos.",
+        incorrect: {
+            b: "CH₃-(CH₂)₁₆-COOH é a fórmula do ácido palmítico ou esteárico, não de dimeticona.",
+            c: "HO-C(O)-O-CH₃ é metil éster, não um siloxano.",
+            d: "C₂₈H₄₄N₂O₂₃ é a fórmula do ácido hialurônico, não de dimeticona."
+        }
+    },
+    q8: {
+        correct: "a) Remover sujeira e óleos",
+        explanation: "CORRETO: Tensoativos possuem a propriedade de emulsificar sujeira e oleosidade, permitindo a limpeza do cabelo.",
+        incorrect: {
+            b: "INCORRETO: Tensoativos não dão cor aos fios.",
+            c: "INCORRETO: Conservação do produto é função de conservantes.",
+            d: "INCORRETO: Viscosidade é regulada por espessantes, não tensoativos."
+        }
+    },
+    q9: {
+        correct: "b) Ciclometicona",
+        explanation: "CORRETO: Ciclometicona é uma silicona volátil usada em cosméticos para suavizar e dar brilho aos cabelos.",
+        incorrect: {
+            a: "INCORRETO: Ácido salicílico é um queratolítico, não uma silicona.",
+            c: "INCORRETO: Glicerina é umectante, não silicona.",
+            d: "INCORRETO: Ácido cítrico é regulador de pH, não uma silicona."
+        }
+    },
+    q10: {
+        correct: "c) Prevenir crescimento microbiano",
+        explanation: "CORRETO: Conservantes impedem a proliferação de bactérias, fungos e leveduras, garantindo a segurança e durabilidade do produto.",
+        incorrect: {
+            a: "INCORRETO: Fragrância é função de aromatizantes.",
+            b: "INCORRETO: Cor é fornecida por pigmentos, não por conservantes.",
+            d: "INCORRETO: Conservantes não aumentam absorção na pele."
+        }
+    },
+    q11: {
+        correct: "a) Presença de grupo carboxila polar e cadeia apolar longa",
+        explanation: "CORRETO: Essa estrutura permite que o ácido esteárico seja solúvel tanto em óleo quanto em água, funcionando como emulsionante.",
+        incorrect: {
+            b: "INCORRETO: Ácido esteárico não possui anel benzênico.",
+            c: "INCORRETO: Não possui múltiplas ligações duplas conjugadas.",
+            d: "INCORRETO: Grupos hidroxila livres não são responsáveis por sua ação emulsificante."
+        }
+    },
+    q12: {
+        correct: "b) Baixa tensão superficial e alta flexibilidade molecular",
+        explanation: "CORRETO: Essas propriedades permitem que siliconas cubram os fios, reduzam frizz e aumentem o brilho, sem pesar.",
+        incorrect: {
+            a: "INCORRETO: Alta volatilidade não é desejável para condicionamento capilar.",
+            c: "INCORRETO: Siliconas não são colorantes.",
+            d: "INCORRETO: Elas não reagem quimicamente com queratina, apenas revestem os fios."
+        }
+    },
+    q13: {
+        correct: "a) Presença de múltiplos grupos hidroxila que formam pontes de hidrogênio",
+        explanation: "CORRETO: As pontes de hidrogênio atraem moléculas de água, permitindo grande retenção hídrica.",
+        incorrect: {
+            b: "INCORRETO: Cadeias apolares não retêm água.",
+            c: "INCORRETO: Ácido hialurônico não possui anéis aromáticos que absorvem água.",
+            d: "INCORRETO: Grupos amino não são o principal fator de hidratação."
+        }
+    },
+    q14: {
+        correct: "b) Ácido hialurônico",
+        explanation: "CORRETO: A fórmula C₂₈H₄₄N₂O₂₃ corresponde ao ácido hialurônico, um polissacarídeo altamente hidrofílico.",
+        incorrect: {
+            a: "INCORRETO: Ácido esteárico tem fórmula diferente, C₁₈H₃₆O₂.",
+            c: "INCORRETO: Dimeticona é um silicone, não corresponde a essa fórmula.",
+            d: "INCORRETO: Metilparabeno é um conservante simples, não essa molécula complexa."
+        }
+    },
+    q15: {
+        correct: "c) C₆H₁₈OSi₂",
+        explanation: "CORRETO: Dimeticona é uma silicona de baixa viscosidade, usada para suavizar e proteger a pele e cabelos.",
+        incorrect: {
+            a: "INCORRETO: C₁₈H₃₆O₂ é ácido esteárico.",
+            b: "INCORRETO: C₈H₈O₃ é outro composto orgânico, não dimeticona.",
+            d: "INCORRETO: C₂₈H₄₄N₂O₂₃ é ácido hialurônico, não dimeticona."
+        }
+    }
+};
         
         // Adiciona event listeners para todas as questões
         document.querySelectorAll('.options input').forEach(input => {
@@ -1492,6 +1486,7 @@
                 section.style.animationDelay = `${index * 0.2}s`;
             });
         });
+        
     </script>
 </body>
 </html>
